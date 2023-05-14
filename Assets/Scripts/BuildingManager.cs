@@ -7,16 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class BuildingManager : MonoBehaviour {
     public static BuildingManager Instance { get; private set; }
+
     public GameObject pendingObject;
+
     private Vector3 pos;
+
     public bool canPlace = true;
 
-    [SerializeField] private GameObject[] buildings;
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private float gridSize = 1f;
-    [SerializeField] private float rotateAmount = 90f;
-    [SerializeField] private Material[] materials;
-    [SerializeField] private BuildingsGameStateObject gameStateObject;
+    [SerializeField]
+    private GameObject[] buildings;
+
+    [SerializeField]
+    private LayerMask layerMask;
+
+    [SerializeField]
+    private float gridSize = 1f;
+
+    [SerializeField]
+    private float rotateAmount = 90f;
+
+    [SerializeField]
+    private Material[] materials;
+
+    [SerializeField]
+    private BuildingsGameStateObject gameStateObject;
 
     private void Awake()
     {

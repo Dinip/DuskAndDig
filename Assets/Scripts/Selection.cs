@@ -6,11 +6,6 @@ using UnityEngine;
 public class Selection : MonoBehaviour {
     public GameObject selectedObject;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
