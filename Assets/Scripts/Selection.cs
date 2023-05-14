@@ -6,13 +6,11 @@ using UnityEngine;
 public class Selection : MonoBehaviour {
     public GameObject selectedObject;
 
-    // Start is called before the first frame update
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -55,7 +53,7 @@ public class Selection : MonoBehaviour {
 
     private void DeselectObject()
     {
-        if(selectedObject == null) return;
+        if (selectedObject == null) return;
         selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
     }

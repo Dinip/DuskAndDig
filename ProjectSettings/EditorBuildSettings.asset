@@ -4,5 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: b347b9d488f5370429bc6371a6b7ff6a
+  - enabled: 1
+    path: Assets/Scenes/CityBuilder.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Action2D.unity
+    guid: 12d96432e733d9f4ba981fe33f339ede
+  - enabled: 1
+    path: Assets/Scenes/CityBuilder2.unity
+    guid: 42fb65e3cff2e9444a951d5914cee76b
   m_configObjects: {}

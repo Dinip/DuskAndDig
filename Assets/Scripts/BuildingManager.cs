@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildingManager : MonoBehaviour {
     public static BuildingManager Instance { get; private set; }
@@ -13,6 +16,7 @@ public class BuildingManager : MonoBehaviour {
     [SerializeField] private float gridSize = 1f;
     [SerializeField] private float rotateAmount = 90f;
     [SerializeField] private Material[] materials;
+    [SerializeField] private BuildingsGameStateObject gameStateObject;
 
     private void Awake()
     {
@@ -24,6 +28,11 @@ public class BuildingManager : MonoBehaviour {
         {
             Instance = this;
         }
+    }
+
+    private void OnEnable()
+    {
+        gameStateObject.LoadState(buildings);
     }
 
     void Update()
@@ -92,6 +101,7 @@ public class BuildingManager : MonoBehaviour {
     public void SelectObject(int index)
     {
         pendingObject = Instantiate(buildings[index], pos, transform.rotation);
+        materials[2] = pendingObject.GetComponent<MeshRenderer>().material;
     }
 
     private float RoundToNearestGrid(float pos)
@@ -103,5 +113,14 @@ public class BuildingManager : MonoBehaviour {
             pos += gridSize;
         }
         return pos;
+    }
+
+    public void ChangeScene(string name)
+    {
+        if (name == "CityBuilder2")
+        {
+            gameStateObject.SaveState();
+        }
+        SceneManager.LoadScene(name);
     }
 }
