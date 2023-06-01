@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BuildingState", menuName = "ScriptableObjects/BuildingState", order = 1)]
 public abstract class BuildingState : ScriptableObject
 {
-
     public BuildingType buildingType;
     public int level = 1;
     public int maxLevel = 4;
