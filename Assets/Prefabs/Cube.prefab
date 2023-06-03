@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4499795113301440188}
   - component: {fileID: 3970193170518651958}
   - component: {fileID: 2101101053253946915}
-  - component: {fileID: 7443806056208516700}
   - component: {fileID: 3910008070218782817}
-  - component: {fileID: -1822486497010834193}
+  - component: {fileID: 7914461696634629904}
+  - component: {fileID: 8336247556197025830}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Placeable
@@ -96,7 +96,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7734791207995850016}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -117,19 +117,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7443806056208516700
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7734791207995850016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3910008070218782817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9614b64da19bca4a959d12375e710d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-1822486497010834193
+  buildingObject: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
+--- !u!114 &7914461696634629904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +139,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 7734791207995850016}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64e9e026d52cd3847a2bf3f86f8fc062, type: 3}
+  m_Script: {fileID: 11500000, guid: 234be687dbd844f4798b49969163db93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingState: {fileID: 0}
+  buildingsSet: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
+  inventoryObject: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
+  building:
+    buildingType: 1
+    level: 1
+    maxLevel: 4
+    levelMultipler:
+    - 0.2
+    - 0.5
+    - 1
+    - 2
+    levelCost: []
+    input: {fileID: 0}
+    output: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
+--- !u!135 &8336247556197025830
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7734791207995850016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 0, y: 0, z: 0}
