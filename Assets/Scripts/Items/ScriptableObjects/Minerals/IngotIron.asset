@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c92f6916f51c84180ccd6986ebd922, type: 3}
   m_Name: IngotIron
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 21300000, guid: 567fdd2e557fefc478f8aaa7ae56fb11, type: 3}
+  uiDisplay: {fileID: 21300000, guid: d5d7f95582604484a87a97c246803bc7, type: 3}
   characterDisplay: {fileID: 0}
   stackable: 1
   type: 2
   data:
-    Name: ingot_iron
+    Name: Iron Ingot
     Id: 2
     buffs: []

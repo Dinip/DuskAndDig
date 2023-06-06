@@ -3,19 +3,19 @@ using UnityEngine;
 public class BuildingSelection : MonoBehaviour
 {
     [SerializeField]
-    private EventBus buildingObject;
+    private EventBus eventBus;
 
     [SerializeField]
     private GameObject selectedObject;
 
     private void OnEnable()
     {
-        buildingObject.selectedBuilding.AddListener(SelectObject);
+        eventBus.selectedBuilding.AddListener(SelectObject);
     }
 
     private void OnDisable()
     {
-        buildingObject.selectedBuilding.RemoveListener(SelectObject);
+        eventBus.selectedBuilding.RemoveListener(SelectObject);
     }
 
     void Update()
@@ -28,14 +28,14 @@ public class BuildingSelection : MonoBehaviour
             {
                 if (hitInfo.collider.gameObject.CompareTag("Placeable"))
                 {
-                    buildingObject.selectedBuilding.Invoke(hitInfo.collider.gameObject);
+                    eventBus.selectedBuilding.Invoke(hitInfo.collider.gameObject);
                 }
             }
         }
 
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
         {
-            buildingObject.selectedBuilding.Invoke(null);
+            eventBus.selectedBuilding.Invoke(null);
         }
     }
 
@@ -69,6 +69,6 @@ public class BuildingSelection : MonoBehaviour
 
     public void MoveObject()
     {
-        buildingObject.pendingBuilding.Invoke(selectedObject);
+        eventBus.pendingBuilding.Invoke(selectedObject);
     }
 }

@@ -9,7 +9,8 @@ public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject inventory;
 
-    public Dictionary<GameObject, InventorySlot> slotsOnInterface = new();
+    [SerializeField]
+    protected Dictionary<GameObject, InventorySlot> slotsOnInterface = new();
 
     void Start()
     {

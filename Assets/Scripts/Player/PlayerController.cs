@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     private CharacterController controller;
     private Animator animator;
-    private Vector3 playerVelocity;
 
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        controller = gameObject.AddComponent<CharacterController>();
+        controller = gameObject.GetComponent<CharacterController>();
         animator = gameObject.GetComponent<Animator>();
     }
 
@@ -31,8 +32,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetInteger("Walking", 0);
         }
-
-        controller.Move(playerVelocity * Time.deltaTime);
     }
 
     public void Heal(float value)

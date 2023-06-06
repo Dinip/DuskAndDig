@@ -144,18 +144,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buildingsSet: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
   inventoryObject: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
+  eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
   building:
     buildingType: 0
     level: 1
     maxLevel: 4
     levelMultipler:
-    - 0.2
-    - 0.5
-    - 1
-    - 2
-    levelCost: []
-    input: {fileID: 0}
-    output: {fileID: 0}
+    - 20
+    - 17.5
+    - 12.5
+    - 5
+    levelCost:
+    - levelUpgrade: []
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    input: {fileID: 11400000, guid: ac27662e7f1e582498bb9f80a05fb5ae, type: 2}
+    output: {fileID: 11400000, guid: 571b4d2729af47445af270ea87abc0c3, type: 2}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!135 &5474286317690949396
@@ -169,5 +182,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 1.3
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

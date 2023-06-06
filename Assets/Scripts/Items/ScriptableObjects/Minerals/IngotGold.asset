@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 39d66829824cb1d4da958035ee18213a, type: 3}
   characterDisplay: {fileID: 0}
-  stackable: 0
+  stackable: 1
   type: 3
   data:
-    Name: ingot_gold
+    Name: Gold Ingot
     Id: 1
     buffs: []

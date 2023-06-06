@@ -4,7 +4,8 @@ using UnityEngine.EventSystems;
 
 public class StaticInterface : UserInterface
 {
-    public GameObject[] slots;
+    [SerializeField]
+    private GameObject[] slots;
 
     public override void CreateSlots()
     {
