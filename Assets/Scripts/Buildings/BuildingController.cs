@@ -93,7 +93,7 @@ public class BuildingController : MonoBehaviour
     private void HealPlayer(GameObject player)
     {
         var healthGained = building.levelMultipler[building.level - 1] * Time.deltaTime;
-        var playerController = player.GetComponent<PlayerController>();
+        var playerController = player.GetComponent<PlayerController3D>();
         playerController.Heal(healthGained);
     }
 

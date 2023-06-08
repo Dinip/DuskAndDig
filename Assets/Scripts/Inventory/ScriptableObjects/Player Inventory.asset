@@ -40,7 +40,7 @@ MonoBehaviour:
         Name: IngotIron
         Id: 2
         buffs: []
-      amount: -4
+      amount: 20
     - AllowedItems: 
       item:
         Name: 
@@ -58,7 +58,7 @@ MonoBehaviour:
         Name: IngotGold
         Id: 1
         buffs: []
-      amount: 5
+      amount: 20
     - AllowedItems: 
       item:
         Name: 

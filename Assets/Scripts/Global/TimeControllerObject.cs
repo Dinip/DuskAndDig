@@ -21,7 +21,6 @@ public class TimeControllerObject : ScriptableObject
 
     private void OnEnable()
     {
-        currentDay = 1;
         currentTime = DateTime.Now.Date + TimeSpan.FromHours(startHour);
     }
 }

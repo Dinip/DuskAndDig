@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public enum ItemType
 {
@@ -20,6 +21,8 @@ public enum Attributes
 public class ItemObject : ScriptableObject
 {
     public Sprite uiDisplay;
+
+    public TileBase tile;
 
     public GameObject characterDisplay;
 

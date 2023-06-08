@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OreGold
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 68f03904aa02ba244a61e03fee3f6293, type: 3}
+  tile: {fileID: 11400000, guid: 20e8abd494087654e84a2d3bcdf779c7, type: 2}
   characterDisplay: {fileID: 0}
   stackable: 1
   type: 2

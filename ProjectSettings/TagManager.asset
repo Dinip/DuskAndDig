@@ -12,8 +12,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Loot
   - 
   - 
   - 
@@ -39,6 +39,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 960069553
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Terrain
+    uniqueID: 4050922523
+    locked: 0
+  - name: Temp
+    uniqueID: 1917083035
+    locked: 0
+  - name: Player
+    uniqueID: 684136835
     locked: 0
