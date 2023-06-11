@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Assets/ScriptableObjects/TimeControllerState", menuName = "GameState/TimeControllerState")]
+[CreateAssetMenu(fileName = "TimeObject", menuName = "GameData/TimeObject")]
 public class TimeControllerObject : ScriptableObject
 {
     public float cityBuilderTimeMultiplier = 144f; // 12h in 5 minutes

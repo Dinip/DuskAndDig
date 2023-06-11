@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "PlayerHealth", menuName = "PlayerOrEnemy/PlayerHealth")]
 public class HealthObject : ScriptableObject
 {
     [SerializeField]

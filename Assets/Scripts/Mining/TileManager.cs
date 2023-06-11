@@ -49,7 +49,6 @@ public class TileManager : MonoBehaviour
 
     private RuleTileWithData TileToSpawn(SpawnProbability originalSpawnProbability, float y)
     {
-        Debug.Log(y);
         SpawnProbability spawnProbability = new()
         {
             day = originalSpawnProbability.day,

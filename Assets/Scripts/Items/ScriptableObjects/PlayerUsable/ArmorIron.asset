@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ArmorIron
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 567fdd2e557fefc478f8aaa7ae56fb11, type: 3}
+  tile: {fileID: 0}
   characterDisplay: {fileID: -6615017778036176718, guid: b5ad3e3f86ac708438b2f3490322bcc6, type: 3}
   stackable: 0
   type: 1
@@ -20,11 +21,7 @@ MonoBehaviour:
     Name: armor_iron
     Id: 6
     buffs:
-    - attribute: 1
-      value: 40
-      min: 1
-      max: 40
     - attribute: 2
-      value: 85
-      min: 85
-      max: 85
+      value: 20
+      min: 20
+      max: 20

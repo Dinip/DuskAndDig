@@ -4,13 +4,10 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private float attackCooldown;
+    private EnemyObject enemyObject;
 
     [SerializeField]
     private float range;
-
-    [SerializeField]
-    private int damage;
 
     [SerializeField]
     private float colliderDistance;
@@ -22,8 +19,11 @@ public class Enemy : MonoBehaviour
     private LayerMask playerLayer;
 
     private float _cooldownTimer;
+
     private Animator _animator;
+
     private PlayerController2D _player;
+
     private EnemyPatrol _enemyPatrol;
 
     private void Awake()
@@ -36,10 +36,10 @@ public class Enemy : MonoBehaviour
     {
         _cooldownTimer += Time.deltaTime;
 
-        //Attack only when player in sight?
+        //Attack only when player in sight
         if (PlayerInSight())
         {
-            if (_cooldownTimer >= attackCooldown)
+            if (_cooldownTimer >= enemyObject.AttackCooldown)
             {
                 _cooldownTimer = 0;
                 _animator.SetTrigger("meleeAttack");
@@ -80,9 +80,10 @@ public class Enemy : MonoBehaviour
 
     private void DamagePlayer()
     {
+        Debug.Log(enemyObject.Damage);
         if (PlayerInSight())
         {
-            _player.TakeDamage(damage);
+            _player.TakeDamage(enemyObject.Damage);
         }
     }
 }

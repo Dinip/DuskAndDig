@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6206127778449149911}
   m_Layer: 8
   m_Name: EnemySpear
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -261,9 +261,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4541c75fffde6444fa038abe2fcdde58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2
+  enemyObject: {fileID: 11400000, guid: 8022d0294c43e8b46aa8bcb3b907f3f0, type: 2}
   range: 1
-  damage: 2
   colliderDistance: 1.25
   boxCollider: {fileID: 6206127778685880013}
   playerLayer:

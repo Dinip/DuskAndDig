@@ -18,14 +18,10 @@ MonoBehaviour:
   stackable: 0
   type: 1
   data:
-    Name: armor_wood
+    Name: armor_diamond
     Id: 7
     buffs:
-    - attribute: 1
-      value: 20
-      min: 1
-      max: 20
     - attribute: 2
-      value: 80
-      min: 80
-      max: 80
+      value: 60
+      min: 60
+      max: 60

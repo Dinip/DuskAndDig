@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "Assets/Scripts/EventBus", menuName = "EventBus")]
+[CreateAssetMenu(fileName = "EventBus", menuName = "GameData/EventBus")]
 public class EventBus : ScriptableObject
 {
     [NonSerialized]

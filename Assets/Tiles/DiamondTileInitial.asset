@@ -17,5 +17,5 @@ MonoBehaviour:
   m_DefaultColliderType: 1
   m_TilingRules: []
   itemObject: {fileID: 0}
-  nextState: {fileID: 11400000, guid: 56d483c834d658e4b987127b7aa44c9d, type: 2}
+  nextState: {fileID: 11400000, guid: 6426111cefa054e4583d56aa0e1a5f96, type: 2}
   filler: 0

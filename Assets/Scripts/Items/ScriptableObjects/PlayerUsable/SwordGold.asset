@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SwordGold
   m_EditorClassIdentifier: 
   uiDisplay: {fileID: 21300000, guid: 90e99a7fde056a4418b9fe16084adb5c, type: 3}
+  tile: {fileID: 0}
   characterDisplay: {fileID: 0}
   stackable: 0
   type: 0
@@ -21,6 +22,6 @@ MonoBehaviour:
     Id: 8
     buffs:
     - attribute: 0
-      value: 60
-      min: 60
-      max: 60
+      value: 35
+      min: 35
+      max: 35

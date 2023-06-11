@@ -16,5 +16,5 @@ MonoBehaviour:
   actionTimeMultiplier: 72
   cityBuilderStartTime: 8
   actionStartTime: 20
-  currentDay: 1
+  currentDay: 7
   startHour: 8
