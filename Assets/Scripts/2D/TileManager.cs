@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +13,9 @@ public class TileManager : MonoBehaviour
 
     [SerializeField]
     private RuleTileWithData[] ores;
+
+    [SerializeField]
+    private int diamondSpawnHeight = -25;
 
     [SerializeField]
     public List<SpawnProbability> spawnProbabilities;
@@ -39,33 +41,44 @@ public class TileManager : MonoBehaviour
         foreach (var slot in possibleSlots)
         {
             var tile = tilemapState.GetTile(slot);
-            var newTile = TileToSpawn(spawnProbability);
+            var newTile = TileToSpawn(spawnProbability, slot.y);
             tile.tile = newTile;
             _mainTilemap.SetTile(slot, newTile);
         }
     }
 
-    private RuleTileWithData TileToSpawn(SpawnProbability spawnProbability)
+    private RuleTileWithData TileToSpawn(SpawnProbability originalSpawnProbability, float y)
     {
-        // calculate the remaining percentage for the stone tile
-        float remainingPercentage = 1f - spawnProbability.ironProbability - spawnProbability.goldProbability;
+        Debug.Log(y);
+        SpawnProbability spawnProbability = new()
+        {
+            day = originalSpawnProbability.day,
+            ironProbability = y <= diamondSpawnHeight ? originalSpawnProbability.ironProbability : originalSpawnProbability.ironProbability + (originalSpawnProbability.diamondProbability / 2),
+            goldProbability = y <= diamondSpawnHeight ? originalSpawnProbability.goldProbability : originalSpawnProbability.goldProbability + (originalSpawnProbability.diamondProbability / 2),
+            diamondProbability = y <= diamondSpawnHeight ? originalSpawnProbability.diamondProbability : 0
+        };
 
         float randomValue = UnityEngine.Random.value;
 
-        if (randomValue <= remainingPercentage)
+        if (randomValue <= spawnProbability.ironProbability)
         {
-            // spawn stone tile
-            return ores[2];
+            // Spawn iron tile
+            return ores[0];
         }
-        else if (randomValue <= spawnProbability.goldProbability)
+        else if (randomValue <= spawnProbability.ironProbability + spawnProbability.goldProbability)
         {
-            // spawn gold tile
+            // Spawn gold tile
             return ores[1];
+        }
+        else if (randomValue <= spawnProbability.ironProbability + spawnProbability.goldProbability + spawnProbability.diamondProbability)
+        {
+            // Spawn diamond tile
+            return ores[2];
         }
         else
         {
-            // spawn gold tile
-            return ores[0];
+            // Spawn stone tile
+            return ores[3];
         }
     }
 }
@@ -77,4 +90,5 @@ public class SpawnProbability
     public int day;
     public float ironProbability;
     public float goldProbability;
+    public float diamondProbability;
 }
