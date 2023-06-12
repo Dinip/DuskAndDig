@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     private Animator _animator;
 
-    private PlayerController2D _player;
+    private Player _player;
 
     private EnemyPatrol _enemyPatrol;
 
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour
         
         if (collider != null)
         {
-            _player = collider.transform.GetComponent<PlayerController2D>();
+            _player = collider.transform.GetComponent<Player>();
         }
 
         return collider != null;
@@ -80,7 +80,6 @@ public class Enemy : MonoBehaviour
 
     private void DamagePlayer()
     {
-        Debug.Log(enemyObject.Damage);
         if (PlayerInSight())
         {
             _player.TakeDamage(enemyObject.Damage);

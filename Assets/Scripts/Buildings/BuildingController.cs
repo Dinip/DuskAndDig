@@ -29,7 +29,8 @@ public class BuildingController : MonoBehaviour
             {
                 if (invSlot.item.Id == upgradeItem.item.data.Id)
                 {
-                    invSlot.UpdateSlot(invSlot.item, invSlot.amount - upgradeItem.amount);
+                    int newAmount = invSlot.amount - upgradeItem.amount;
+                    invSlot.UpdateSlot(newAmount == 0 ? new Item() : invSlot.item, newAmount);
                 }
             }
         }

@@ -32,13 +32,12 @@ public class Loot : MonoBehaviour
     private IEnumerator MoveAndCollect(Transform target)
     {
         Destroy(boxCollider);
-        var targetPos = new Vector3(target.position.x, target.position.y + 1.5f);
-
         while (Vector3.Distance(transform.position, target.position) > 1.25f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             yield return 0;
         }
+        target.GetComponent<Player>().CollectItem(_itemObject);
         Destroy(gameObject);
     }
 }

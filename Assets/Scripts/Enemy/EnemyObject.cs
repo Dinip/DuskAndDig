@@ -27,9 +27,7 @@ public class EnemyObject : ScriptableObject
 
     private void OnEnable()
     {
-        Debug.Log("EnemyObject.OnEnable");
         ComputeValues();
-        Debug.Log($"Health {Health} - Dmg {Damage}");
     }
 
     private void ComputeValues()
