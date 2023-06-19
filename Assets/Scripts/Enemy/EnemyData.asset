@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData
   m_EditorClassIdentifier: 
   timeObject: {fileID: 11400000, guid: 2fd5304e93ccb4648a7b76db10eba927, type: 2}
-  baseHealth: 100
+  baseHealth: 15
   baseDamage: 10
   healthMultiplier: 1.2
   damageMultiplier: 1.1

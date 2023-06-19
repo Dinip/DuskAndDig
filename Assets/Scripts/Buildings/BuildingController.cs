@@ -11,6 +11,9 @@ public class BuildingController : MonoBehaviour
     [SerializeField]
     private EventBus eventBus;
 
+    [SerializeField]
+    private ItemMappingSet itemMappingSet;
+
     public Building building;
 
     private float _lastTime;
@@ -123,7 +126,7 @@ public class BuildingController : MonoBehaviour
             if (inputSlot.item.Id == -1) continue; // slot is empty
 
             //get output item (ingot) from input item (ore)
-            var outputItem = new Item(building.input.database.ItemObjects[OreToIngotMap(inputSlot.item.Id)]);
+            var outputItem = itemMappingSet.Items.Find(i => i.BuildingType == building.buildingType && i.From.data.Id == inputSlot.item.Id).To.CreateItem();
 
             //check if output has space for this item
             var outputHasSpace = building.output.FindItemOnInventory(outputItem) != null || building.output.EmptySlotCount > 0;
@@ -138,12 +141,5 @@ public class BuildingController : MonoBehaviour
             inputSlot.UpdateSlot(inputSlot.item, inputSlot.amount - 1);
             return;
         }
-    }
-
-    private int OreToIngotMap(int ore)
-    {
-        if (ore == 3) return 1;
-        if (ore == 4) return 2;
-        return -1;
     }
 }

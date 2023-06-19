@@ -7,7 +7,7 @@ public class EnemyObject : ScriptableObject
     private TimeControllerObject timeObject;
 
     [SerializeField]
-    private float baseHealth = 100f;
+    private float baseHealth = 10f;
 
     [SerializeField]
     private float baseDamage = 10f;
@@ -49,5 +49,20 @@ public class EnemyObject : ScriptableObject
 //5   244 64
 //6   280 75
 //7   316 86
+
+//*   30  10
+
+//----------------------//
+
+//b   15 10
+//x   1.2 1.1
+
+//1   15  10
+//2   51  21
+//3   87  32
+//4   123 43
+//5   159 54
+//6   195 65
+//7   231 76
 
 //*   30  10

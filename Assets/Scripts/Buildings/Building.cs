@@ -14,6 +14,14 @@ public class Building
     public InventoryObject output;
     public Vector3 Position;
     public Quaternion Rotation;
+
+    public float CurrentMultiplier
+    {
+        get
+        {
+            return levelMultipler[level - 1];
+        }
+    }
 }
 
 [Serializable]

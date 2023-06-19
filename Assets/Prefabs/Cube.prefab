@@ -145,6 +145,7 @@ MonoBehaviour:
   buildingsSet: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
   inventoryObject: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
+  itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
   building:
     buildingType: 1
     level: 1

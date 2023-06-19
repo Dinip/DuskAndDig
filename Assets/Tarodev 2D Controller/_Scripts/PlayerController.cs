@@ -45,6 +45,9 @@ namespace TarodevController {
         public bool GrabbingLedge { get; private set; }
         public bool ClimbingLedge { get; private set; }
 
+        [SerializeField]
+        private InventoryObject equipment;
+
         public virtual void ApplyVelocity(Vector2 vel, PlayerForce forceType) {
             if (forceType == PlayerForce.Burst) _speed += vel;
             else _currentExternalVelocity += vel;
@@ -523,7 +526,7 @@ namespace TarodevController {
         protected virtual void HandleAttacking() {
             if (!_attackToConsume) return;
             // note: animation looks weird if we allow attacking while crouched. consider different attack animations or not allow it while crouched
-            if (_fixedFrame > _frameLastAttacked + _stats.AttackFrameCooldown) {
+            if (_fixedFrame > _frameLastAttacked + _stats.AttackFrameCooldown && equipment.GetSlots[1].ItemObject != null) {
                 _frameLastAttacked = _fixedFrame;
                 Attacked?.Invoke();
             }
