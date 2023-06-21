@@ -80,17 +80,35 @@ public class BuildingController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && building.buildingType == BuildingType.OreProcessing)
+        if (!other.CompareTag("Player")) return;
+
+        if (building.buildingType == BuildingType.OreProcessing)
         {
-            eventBus.onOreProcessingRange.Invoke(true);
+            eventBus.onOreProcessingRange.Invoke(building);
+            return;
+        }
+
+        if (building.buildingType == BuildingType.BlackSmith)
+        {
+            eventBus.onBlackSmithRange.Invoke(building);
+            return;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && building.buildingType == BuildingType.OreProcessing)
+        if (!other.CompareTag("Player")) return;
+
+        if (building.buildingType == BuildingType.OreProcessing)
         {
-            eventBus.onOreProcessingRange.Invoke(false);
+            eventBus.onOreProcessingRange.Invoke(null);
+            return;
+        }
+
+        if (building.buildingType == BuildingType.BlackSmith)
+        {
+            eventBus.onBlackSmithRange.Invoke(null);
+            return;
         }
     }
 
@@ -105,11 +123,18 @@ public class BuildingController : MonoBehaviour
     {
         if (building.buildingType == BuildingType.OreProcessing)
         {
+            if (building.input.GetSlots.Length == building.input.EmptySlotCount)
+            {
+                _lastTime = 0;
+                eventBus.oreProcessingProgress?.Invoke(0f);
+                return;
+            }
+
             if (Time.deltaTime + _lastTime > building.levelMultipler[building.level - 1])
             {
                 TransferItemFromInputToOutput();
                 _lastTime = 0;
-                eventBus.oreProcessingProgress.Invoke(0f);
+                eventBus.oreProcessingProgress?.Invoke(0f);
                 return;
             }
             _lastTime += Time.deltaTime;
@@ -126,7 +151,7 @@ public class BuildingController : MonoBehaviour
             if (inputSlot.item.Id == -1) continue; // slot is empty
 
             //get output item (ingot) from input item (ore)
-            var outputItem = itemMappingSet.Items.Find(i => i.BuildingType == building.buildingType && i.From.data.Id == inputSlot.item.Id).To.CreateItem();
+            var outputItem = itemMappingSet.Items.Find(i => i.buildingType == building.buildingType && i.from.data.Id == inputSlot.item.Id).to.CreateItem();
 
             //check if output has space for this item
             var outputHasSpace = building.output.FindItemOnInventory(outputItem) != null || building.output.EmptySlotCount > 0;

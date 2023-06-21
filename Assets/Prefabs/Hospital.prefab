@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7914461696634629904}
   - component: {fileID: 8336247556197025830}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Hospital
   m_TagString: Placeable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,16 +145,16 @@ MonoBehaviour:
   buildingsSet: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
   inventoryObject: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
-  itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
+  itemMappingSet: {fileID: 0}
   building:
     buildingType: 1
     level: 1
     maxLevel: 4
     levelMultipler:
-    - 0.2
-    - 0.5
     - 1
     - 2
+    - 3
+    - 4
     levelCost:
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}

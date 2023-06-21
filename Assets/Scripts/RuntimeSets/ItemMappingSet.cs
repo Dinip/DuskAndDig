@@ -7,9 +7,10 @@ public class ItemMappingSet : RuntimeSet<ItemToItem>
 [System.Serializable]
 public class ItemToItem
 {
-    public ItemObject From;
-    public int FromAmount;
-    public ItemObject To;
-    public int ToAmount;
-    public BuildingType BuildingType;
+    public ItemObject from;
+    public int fromAmount;
+    public ItemObject to;
+    public int toAmount;
+    public int level;
+    public BuildingType buildingType;
 }

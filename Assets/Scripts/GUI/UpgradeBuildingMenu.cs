@@ -19,6 +19,15 @@ public class UpgradeBuildingMenu : MonoBehaviour
     [SerializeField]
     private GameObject[] upgradeUIs;
 
+    [SerializeField]
+    private GameObject[] atualIcons;
+
+    [SerializeField]
+    private GameObject[] nextIcons;
+
+    [SerializeField]
+    private ItemMappingSet itemMappingSet;
+
     private BuildingController _building;
 
     private void OnEnable()
@@ -91,43 +100,74 @@ public class UpgradeBuildingMenu : MonoBehaviour
 
     private void MultiplierTexts(Building building)
     {
-        if (building.buildingType == BuildingType.Hospital)
+        if (building.buildingType == BuildingType.BlackSmith)
         {
-            actualMultiplier.text = $"{building.levelMultipler[building.level - 1]}HP/sec";
+            actualMultiplier.enabled = false;
+            nextMultiplier.enabled = false;
+
+            //actualMultiplier.text = $"+{building.CurrentMultiplier}%";
+            var currentItems = itemMappingSet.Items.FindAll(x => x.buildingType == BuildingType.BlackSmith && x.level <= building.level);
+            var startCurrentPoint = currentItems.Count != atualIcons.Length ? (atualIcons.Length / 2) - (currentItems.Count / 2) : 0;
+            for (int i = 0; i < currentItems.Count; i++)
+            {
+                atualIcons[startCurrentPoint + i].SetActive(true);
+                atualIcons[startCurrentPoint + i].GetComponent<Image>().sprite = currentItems[i].to.uiDisplay;
+            }
+
             if (building.level + 1 > building.maxLevel)
             {
+                nextMultiplier.enabled = true;
                 nextMultiplier.text = "Maxed Out";
+                ToggleUpgradeIcons(true, false);
             }
             else
             {
-                nextMultiplier.text = $"{building.levelMultipler[building.level]}HP/sec";
+                var nextItems = itemMappingSet.Items.FindAll(x => x.buildingType == BuildingType.BlackSmith && x.level == building.level + 1);
+                var startNextPoint = nextItems.Count != nextIcons.Length ? (nextIcons.Length / 2) - (nextItems.Count / 2) : 0;
+                for (int i = 0; i < nextItems.Count; i++)
+                {
+                    nextIcons[startNextPoint + i].SetActive(true);
+                    nextIcons[startNextPoint + i].GetComponent<Image>().sprite = nextItems[i].to.uiDisplay;
+                }
             }
+            return;
         }
 
-        if (building.buildingType == BuildingType.OreProcessing)
-        {
-            actualMultiplier.text = $"{building.levelMultipler[building.level - 1]} sec burn time";
-            if (building.level + 1 > building.maxLevel)
-            {
-                nextMultiplier.text = "Maxed Out";
-            }
-            else
-            {
-                nextMultiplier.text = $"{building.levelMultipler[building.level]} sec burn time";
-            }
-        }
+        actualMultiplier.enabled = true;
+        nextMultiplier.enabled = true;
+        ToggleUpgradeIcons();
 
-        if (building.buildingType == BuildingType.Beacon)
+        actualMultiplier.text = $"{building.CurrentMultiplier}{BuildingText(building.buildingType)}";
+        if (building.level + 1 > building.maxLevel)
         {
-            actualMultiplier.text = $"+{building.levelMultipler[building.level - 1]}%";
-            if (building.level + 1 > building.maxLevel)
-            {
-                nextMultiplier.text = "Maxed Out";
-            }
-            else
-            {
-                nextMultiplier.text = $"+{building.levelMultipler[building.level]}%";
-            }
+            nextMultiplier.text = "Maxed Out";
         }
+        else
+        {
+            nextMultiplier.text = $"{building.NextMultiplier}{BuildingText(building.buildingType)}";
+        }
+    }
+
+    private void ToggleUpgradeIcons(bool atual = false, bool next = false)
+    {
+        for (int i = 0; i < atualIcons.Length; i++)
+        {
+            atualIcons[i].SetActive(atual);
+        }
+        for (int i = 0; i < nextIcons.Length; i++)
+        {
+            nextIcons[i].SetActive(next);
+        }
+    }
+
+    private string BuildingText(BuildingType type)
+    {
+        return type switch
+        {
+            BuildingType.Hospital => "HP/sec",
+            BuildingType.OreProcessing => "sec burn time",
+            BuildingType.Beacon => "%",
+            _ => "",
+        };
     }
 }

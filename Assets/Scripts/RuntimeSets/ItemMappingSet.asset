@@ -13,11 +13,51 @@ MonoBehaviour:
   m_Name: ItemMappingSet
   m_EditorClassIdentifier: 
   Items:
-  - From: {fileID: 11400000, guid: 1e2a53caa661b114aac63f933d8f5a89, type: 2}
-    FromAmount: 1
-    To: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
-    ToAmount: 1
-  - From: {fileID: 11400000, guid: aed854370b1ef1145b4f563418e9b832, type: 2}
-    FromAmount: 1
-    To: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
-    ToAmount: 1
+  - from: {fileID: 11400000, guid: 1e2a53caa661b114aac63f933d8f5a89, type: 2}
+    fromAmount: 1
+    to: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+    toAmount: 1
+    level: 1
+    buildingType: 0
+  - from: {fileID: 11400000, guid: aed854370b1ef1145b4f563418e9b832, type: 2}
+    fromAmount: 1
+    to: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+    toAmount: 1
+    level: 1
+    buildingType: 0
+  - from: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+    fromAmount: 2
+    to: {fileID: 11400000, guid: 5d31349b4b5b8c6469a9c20036ab507f, type: 2}
+    toAmount: 1
+    level: 1
+    buildingType: 3
+  - from: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+    fromAmount: 4
+    to: {fileID: 11400000, guid: 00dfa6df821688d41a7b3022a592ba7f, type: 2}
+    toAmount: 1
+    level: 1
+    buildingType: 3
+  - from: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+    fromAmount: 2
+    to: {fileID: 11400000, guid: 09bea86bf9b9cb64b9aabb9c6d7d7627, type: 2}
+    toAmount: 1
+    level: 2
+    buildingType: 3
+  - from: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+    fromAmount: 4
+    to: {fileID: 11400000, guid: ac75ee3cff367ac40be0f60fce33e67b, type: 2}
+    toAmount: 1
+    level: 2
+    buildingType: 3
+  - from: {fileID: 11400000, guid: 055e62e7c634e5b43b90c841422203ce, type: 2}
+    fromAmount: 2
+    to: {fileID: 11400000, guid: 89d362338999eb741a4aad8922ecaf4e, type: 2}
+    toAmount: 1
+    level: 3
+    buildingType: 3
+  - from: {fileID: 11400000, guid: 055e62e7c634e5b43b90c841422203ce, type: 2}
+    fromAmount: 4
+    to: {fileID: 11400000, guid: 6f3c824703667984b9ab08dcd8fe36b4, type: 2}
+    toAmount: 1
+    level: 3
+    buildingType: 3

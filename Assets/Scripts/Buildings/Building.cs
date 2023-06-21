@@ -22,6 +22,14 @@ public class Building
             return levelMultipler[level - 1];
         }
     }
+
+    public float NextMultiplier
+    {
+        get
+        {
+            return levelMultipler[level];
+        }
+    }
 }
 
 [Serializable]
