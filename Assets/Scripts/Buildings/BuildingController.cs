@@ -2,8 +2,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BuildingController : MonoBehaviour
-{
+public class BuildingController : MonoBehaviour {
     [SerializeField]
     private BuildingsSet buildingsSet;
 
@@ -35,6 +34,7 @@ public class BuildingController : MonoBehaviour
     private void SelectedCraft(ItemToItem item)
     {
         if (building.buildingType == BuildingType.BlackSmith) _itemToCraft = item;
+        if (item == null) ResetProgress(eventBus.blackSmithProgress);
     }
 
     public bool UpgradeBuilding()

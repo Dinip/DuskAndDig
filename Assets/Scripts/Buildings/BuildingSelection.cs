@@ -5,8 +5,7 @@ public class BuildingSelection : MonoBehaviour
     [SerializeField]
     private EventBus eventBus;
 
-    [SerializeField]
-    private GameObject selectedObject;
+    private GameObject _selectedObject;
 
     private bool _anyMenuOpen;
 
@@ -47,8 +46,8 @@ public class BuildingSelection : MonoBehaviour
 
     private void SelectObject(GameObject gObj)
     {
-        if (gObj == selectedObject) return;
-        if (selectedObject != null)
+        if (gObj == _selectedObject) return;
+        if (_selectedObject != null)
         {
             DeselectObject();
             return;
@@ -63,18 +62,18 @@ public class BuildingSelection : MonoBehaviour
             gObj.AddComponent<Outline>();
         }
 
-        selectedObject = gObj;
+        _selectedObject = gObj;
     }
 
     private void DeselectObject()
     {
-        if (selectedObject == null) return;
-        selectedObject.GetComponent<Outline>().enabled = false;
-        selectedObject = null;
+        if (_selectedObject == null) return;
+        _selectedObject.GetComponent<Outline>().enabled = false;
+        _selectedObject = null;
     }
 
     public void MoveObject()
     {
-        eventBus.pendingBuilding.Invoke(selectedObject);
+        eventBus.pendingBuilding.Invoke(_selectedObject);
     }
 }

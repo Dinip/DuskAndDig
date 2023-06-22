@@ -2,8 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CraftItemUI : MonoBehaviour
-{
+public class CraftItemUI : MonoBehaviour {
     [SerializeField]
     private EventBus eventBus;
 
@@ -61,10 +60,11 @@ public class CraftItemUI : MonoBehaviour
         toImage.sprite = item.to.uiDisplay;
         _item = item;
         _currentCraft = currentCraft;
+        SelectedCraft(_currentCraft);
     }
 
     public void SelectCraft()
     {
-        eventBus.itemToCraft?.Invoke(_item);
+        eventBus.itemToCraft?.Invoke(_item == _currentCraft ? null : _item);
     }
 }
