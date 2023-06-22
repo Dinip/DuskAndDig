@@ -21,6 +21,8 @@ public class CraftItemUI : MonoBehaviour
 
     private ItemToItem _item;
 
+    private ItemToItem _currentCraft;
+
     private void OnEnable()
     {
         eventBus.itemToCraft.AddListener(SelectedCraft);
@@ -33,21 +35,32 @@ public class CraftItemUI : MonoBehaviour
 
     private void SelectedCraft(ItemToItem item)
     {
+        if (_currentCraft == _item)
+        {
+            GetComponent<Image>().color = new Color(0.45f, 0.45f, 0.45f);
+            _currentCraft = null;
+            return;
+        }
+
         if (item == _item)
         {
             GetComponent<Image>().color = Color.green;
+            _currentCraft = item;
             return;
         }
+
         GetComponent<Image>().color = new Color(0.45f, 0.45f, 0.45f);
+        _currentCraft = item;
     }
 
-    public void Initialize(ItemToItem item)
+    public void Initialize(ItemToItem item, ItemToItem currentCraft)
     {
         fromAmount.text = $"{item.fromAmount:D2}x";
         fromImage.sprite = item.from.uiDisplay;
         toAmount.text = $"{item.toAmount:D2}x";
         toImage.sprite = item.to.uiDisplay;
         _item = item;
+        _currentCraft = currentCraft;
     }
 
     public void SelectCraft()

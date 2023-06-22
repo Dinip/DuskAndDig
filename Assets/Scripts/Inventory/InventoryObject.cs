@@ -161,7 +161,10 @@ public class InventorySlot
         {
             if (item.Id >= 0)
             {
-                return parent.inventory.database.ItemObjects[item.Id];
+                if (parent != null)
+                {
+                    return parent.inventory.database.ItemObjects[item.Id];
+                }
             }
             return null;
         }

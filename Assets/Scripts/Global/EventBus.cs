@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -29,6 +30,9 @@ public class EventBus : ScriptableObject
     [NonSerialized]
     public UnityEvent<float> blackSmithProgress;
 
+    [NonSerialized]
+    public UnityEvent<bool> buildingUIOpened;
+
     private void OnEnable()
     {
         selectedBuilding ??= new UnityEvent<GameObject>();
@@ -39,5 +43,22 @@ public class EventBus : ScriptableObject
         itemToCraft ??= new UnityEvent<ItemToItem>();
         onBlackSmithRange ??= new UnityEvent<Building>();
         blackSmithProgress ??= new UnityEvent<float>();
+        buildingUIOpened ??= new UnityEvent<bool>();
+
+        buildingUIOpened.AddListener(AnyMenuOpen);
+    }
+
+    private void OnDisable()
+    {
+        buildingUIOpened.RemoveListener(AnyMenuOpen);
+    }
+
+    private void AnyMenuOpen(bool open)
+    {
+        if (open)
+        {
+            pendingBuilding?.Invoke(null);
+            selectedBuilding?.Invoke(null);
+        }
     }
 }

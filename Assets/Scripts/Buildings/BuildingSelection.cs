@@ -8,28 +8,34 @@ public class BuildingSelection : MonoBehaviour
     [SerializeField]
     private GameObject selectedObject;
 
+    private bool _anyMenuOpen;
+
     private void OnEnable()
     {
         eventBus.selectedBuilding.AddListener(SelectObject);
+        eventBus.buildingUIOpened.AddListener(AnyMenuOpen);
     }
 
     private void OnDisable()
     {
         eventBus.selectedBuilding.RemoveListener(SelectObject);
+        eventBus.buildingUIOpened.RemoveListener(AnyMenuOpen);
+    }
+
+    private void AnyMenuOpen(bool open)
+    {
+        _anyMenuOpen = open;
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !_anyMenuOpen)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             // raycast from camera to mouse position
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000))
+            if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000, LayerMask.GetMask("Placeable")))
             {
-                if (hitInfo.collider.gameObject.CompareTag("Placeable"))
-                {
-                    eventBus.selectedBuilding.Invoke(hitInfo.collider.gameObject);
-                }
+                eventBus.selectedBuilding.Invoke(hitInfo.collider.gameObject);
             }
         }
 

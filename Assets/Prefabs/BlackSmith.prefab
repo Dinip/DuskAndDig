@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 2101101053253946915}
   - component: {fileID: 3910008070218782817}
   - component: {fileID: 7914461696634629904}
-  - component: {fileID: 8336247556197025830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BlackSmith
   m_TagString: Placeable
   m_Icon: {fileID: 0}
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8008652537744122873}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -151,9 +151,9 @@ MonoBehaviour:
     level: 1
     maxLevel: 3
     levelMultipler:
-    - 0.2
-    - 0.5
-    - 1
+    - 20
+    - 17.5
+    - 12.5
     levelCost:
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
@@ -172,13 +172,45 @@ MonoBehaviour:
     output: {fileID: 11400000, guid: 5b482e0b3cd20f646ac799215fcf17cd, type: 2}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
---- !u!135 &8336247556197025830
+--- !u!1 &8564858999751165992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8008652537744122873}
+  - component: {fileID: 7165838998199719434}
+  m_Layer: 0
+  m_Name: RangeCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8008652537744122873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564858999751165992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4134971541375517216}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &7165838998199719434
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7734791207995850016}
+  m_GameObject: {fileID: 8564858999751165992}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

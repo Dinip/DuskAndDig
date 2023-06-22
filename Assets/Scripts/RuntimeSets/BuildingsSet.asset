@@ -96,9 +96,9 @@ MonoBehaviour:
     level: 2
     maxLevel: 3
     levelMultipler:
-    - 0.2
-    - 0.5
-    - 1
+    - 20
+    - 17.5
+    - 12.5
     levelCost:
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}

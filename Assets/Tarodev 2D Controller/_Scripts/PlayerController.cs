@@ -1,6 +1,7 @@
 // ReSharper disable ClassWithVirtualMembersNeverInherited.Global
 
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace TarodevController {
@@ -526,7 +527,8 @@ namespace TarodevController {
         protected virtual void HandleAttacking() {
             if (!_attackToConsume) return;
             // note: animation looks weird if we allow attacking while crouched. consider different attack animations or not allow it while crouched
-            if (_fixedFrame > _frameLastAttacked + _stats.AttackFrameCooldown && equipment.GetSlots[1].ItemObject != null) {
+            if (_fixedFrame > _frameLastAttacked + _stats.AttackFrameCooldown && equipment.GetSlots.FirstOrDefault(s => s.ItemObject?.type == ItemType.Weapon) != null)
+            {
                 _frameLastAttacked = _fixedFrame;
                 Attacked?.Invoke();
             }

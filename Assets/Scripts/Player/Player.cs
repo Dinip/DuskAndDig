@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using TarodevController;
 using UnityEngine;
@@ -90,7 +89,6 @@ public class Player : MonoBehaviour
 
     private void DamageEnemy()
     {
-        Debug.Log("attack");
         if (EnemyInSight())
         {
             var sword = equipment.GetSlots[1].ItemObject.data.buffs.First(f => f.attribute == Attributes.Damage);

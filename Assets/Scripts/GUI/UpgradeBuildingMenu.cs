@@ -58,7 +58,7 @@ public class UpgradeBuildingMenu : MonoBehaviour
 
     public void UpgradeBuilding()
     {
-        Debug.Log(_building.UpgradeBuilding());
+        _building.UpgradeBuilding();
         eventBus.selectedBuilding.Invoke(null);
     }
 

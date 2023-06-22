@@ -15,8 +15,7 @@ GameObject:
   - component: {fileID: 2101101053253946915}
   - component: {fileID: 3910008070218782817}
   - component: {fileID: 7914461696634629904}
-  - component: {fileID: 8336247556197025830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hospital
   m_TagString: Placeable
   m_Icon: {fileID: 0}
@@ -34,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7259781794233192072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   buildingsSet: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
   inventoryObject: {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
-  itemMappingSet: {fileID: 0}
+  itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
   building:
     buildingType: 1
     level: 1
@@ -174,13 +174,45 @@ MonoBehaviour:
     output: {fileID: 0}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
---- !u!135 &8336247556197025830
+--- !u!1 &8989873297551535452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7259781794233192072}
+  - component: {fileID: 5777979331692566915}
+  m_Layer: 0
+  m_Name: RangeCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7259781794233192072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8989873297551535452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4134971541375517216}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &5777979331692566915
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7734791207995850016}
+  m_GameObject: {fileID: 8989873297551535452}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1

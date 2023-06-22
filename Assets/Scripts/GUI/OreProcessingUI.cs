@@ -24,27 +24,37 @@ public class OreProcessingUI : MonoBehaviour
 
     private bool _inRange;
 
+    private bool _showLabel = true;
+
     private void OnEnable()
     {
         eventBus.onOreProcessingRange.AddListener(InRange);
         eventBus.oreProcessingProgress.AddListener(OreProcessingProgress);
+        eventBus.selectedBuilding.AddListener(ShowLabel);
     }
 
     private void OnDisable()
     {
         eventBus.onOreProcessingRange.RemoveListener(InRange);
         eventBus.oreProcessingProgress.RemoveListener(OreProcessingProgress);
+        eventBus.selectedBuilding.RemoveListener(ShowLabel);
+    }
+
+    private void ShowLabel(GameObject obj)
+    {
+        _showLabel = obj == null;
     }
 
     private void InRange(Building building)
     {
         openLabel.SetActive(building != null);
-        openLabel.GetComponentInChildren<TextMeshProUGUI>().text = "Press F to open (Ore Processing)";
+        if (_showLabel) openLabel.GetComponentInChildren<TextMeshProUGUI>().text = "Press F to open (Ore Processing)";
         _inRange = building != null;
 
         if (!_inRange)
         {
             menu.SetActive(false);
+            eventBus.buildingUIOpened?.Invoke(false);
         }
     }
 
@@ -68,11 +78,13 @@ public class OreProcessingUI : MonoBehaviour
         {
             menu.SetActive(!menu.activeSelf);
             openLabel.SetActive(!menu.activeSelf);
+            eventBus.buildingUIOpened?.Invoke(menu.activeSelf);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             menu.SetActive(false);
+            eventBus.buildingUIOpened?.Invoke(false);
             if (_inRange) openLabel.SetActive(true);
         }
     }
