@@ -3,8 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TimeController : MonoBehaviour
-{
+public class TimeController : MonoBehaviour {
     private TimeSpan _sunriseTime;
 
     private TimeSpan _sunsetTime;
@@ -59,13 +58,11 @@ public class TimeController : MonoBehaviour
     {
         if (timeControllerObject.currentTime.Hour >= timeControllerObject.actionStartTime || timeControllerObject.currentTime.Hour < timeControllerObject.cityBuilderStartTime)
         {
-            //SceneManager.LoadScene("Action2D");
-            //SceneManager.LoadScene("CityBuilder2");
-            if (_currentScene == "CityBuilder") SceneManager.LoadScene("CityBuilder2");
+            if (_currentScene == "CityBuilder") SceneManager.LoadScene("Action2D");
         }
         else
         {
-            if (_currentScene == "CityBuilder2") SceneManager.LoadScene("CityBuilder");
+            if (_currentScene == "Action2D") SceneManager.LoadScene("CityBuilder");
         }
     }
 
@@ -97,7 +94,7 @@ public class TimeController : MonoBehaviour
 
     private TimeSpan CalculateTimeDiff(TimeSpan fromTime, TimeSpan toTime)
     {
-        var diff = fromTime - toTime;
+        var diff = toTime - fromTime;
 
         if (diff.TotalSeconds < 0)
         {
