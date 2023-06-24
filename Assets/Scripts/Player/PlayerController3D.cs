@@ -20,7 +20,7 @@ public class PlayerController3D : MonoBehaviour
 
     void Update()
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         controller.Move(playerSpeed * Time.deltaTime * move);
 
         if (move != Vector3.zero)

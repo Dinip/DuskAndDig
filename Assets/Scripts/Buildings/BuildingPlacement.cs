@@ -63,7 +63,9 @@ public class BuildingPlacement : MonoBehaviour
                 if (buildSet.buildingType == build.buildingType)
                 {
                     var b = Instantiate(buildings[i], buildSet.Position, buildSet.Rotation);
-                    b.GetComponent<BuildingController>().building = buildSet;
+                    var bc = b.GetComponent<BuildingController>();
+                    bc.building = buildSet;
+                    bc.placed = true;
                 }
             }
         }
@@ -90,6 +92,7 @@ public class BuildingPlacement : MonoBehaviour
         if (_pendingObject != null)
         {
             _pendingObject.transform.position = new Vector3(RoundToNearestGrid(_pos.x), RoundToNearestGrid(_pos.y), RoundToNearestGrid(_pos.z));
+            _pendingObject.GetComponent<MeshCollider>().enabled = false;
 
             UpdateMaterials();
 
@@ -113,9 +116,12 @@ public class BuildingPlacement : MonoBehaviour
     public void PlaceObject()
     {
         _pendingObject.GetComponent<MeshRenderer>().material = materials[2];
-        var b = _pendingObject.GetComponent<BuildingController>().building;
+        _pendingObject.GetComponent<MeshCollider>().enabled = true;
+        var bc = _pendingObject.GetComponent<BuildingController>();
+        var b = bc.building;
         b.Position = _pendingObject.transform.position;
         b.Rotation = _pendingObject.transform.rotation;
+        bc.placed = true;
         buildingsSet.Add(b);
         _pendingObject = null;
     }

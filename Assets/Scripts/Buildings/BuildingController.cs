@@ -2,7 +2,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BuildingController : MonoBehaviour {
+public class BuildingController : MonoBehaviour
+{
     [SerializeField]
     private BuildingsSet buildingsSet;
 
@@ -16,6 +17,9 @@ public class BuildingController : MonoBehaviour {
     private ItemMappingSet itemMappingSet;
 
     public Building building;
+
+    [HideInInspector]
+    public bool placed = false;
 
     private float _lastTime;
 
@@ -91,15 +95,13 @@ public class BuildingController : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && building.buildingType == BuildingType.Hospital)
-        {
-            HealPlayer(other.gameObject);
-        }
+        if (!placed || !other.CompareTag("Player") || building.buildingType != BuildingType.Hospital) return;
+        HealPlayer(other.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!placed || !other.CompareTag("Player")) return;
 
         if (building.buildingType == BuildingType.OreProcessing)
         {
@@ -116,7 +118,7 @@ public class BuildingController : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!placed || !other.CompareTag("Player")) return;
 
         if (building.buildingType == BuildingType.OreProcessing)
         {

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Placeable
   - Enemy
+  - Center
   layers:
   - Default
   - TransparentFX

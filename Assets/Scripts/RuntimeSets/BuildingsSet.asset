@@ -40,3 +40,55 @@ MonoBehaviour:
     output: {fileID: 0}
     Position: {x: 3, y: 0, z: 0}
     Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - buildingType: 0
+    level: 1
+    maxLevel: 4
+    levelMultipler:
+    - 20
+    - 17.5
+    - 12.5
+    - 5
+    levelCost:
+    - levelUpgrade: []
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    input: {fileID: 11400000, guid: ac27662e7f1e582498bb9f80a05fb5ae, type: 2}
+    output: {fileID: 11400000, guid: 571b4d2729af47445af270ea87abc0c3, type: 2}
+    Position: {x: -3, y: 0, z: 9}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+  - buildingType: 1
+    level: 1
+    maxLevel: 4
+    levelMultipler:
+    - 1
+    - 2
+    - 3
+    - 4
+    levelCost:
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 5
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 10
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 10
+    input: {fileID: 0}
+    output: {fileID: 0}
+    Position: {x: -9, y: 0, z: -6}
+    Rotation: {x: -0, y: 0.9238795, z: -0, w: 0.38268352}
