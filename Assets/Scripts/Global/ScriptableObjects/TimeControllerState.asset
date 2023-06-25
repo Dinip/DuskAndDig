@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2669b51e6333443863e8ebbfe4c6be, type: 3}
   m_Name: TimeControllerState
   m_EditorClassIdentifier: 
-  cityBuilderTimeMultiplier: 288
-  actionTimeMultiplier: 144
+  cityBuilderTimeRuntime: 3
+  actionTimeRuntime: 5
   cityBuilderStartTime: 8
   actionStartTime: 20
-  currentDay: 1
-  startHour: 8
+  sunriseHour: 8
+  sunsetHour: 20
+  currentDay: 2
+  startHour: 0

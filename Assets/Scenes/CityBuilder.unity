@@ -888,11 +888,11 @@ MonoBehaviour:
   - {fileID: 3703784889132845656, guid: c9af71841371fac489acf5bdd84585e7, type: 3}
   - {fileID: 2765950782078192171, guid: 06d50bb5e9076704286ae71a8704cbe7, type: 3}
   - {fileID: 4687955636402370738, guid: 6295f1549c765af45a5a7c79067dac51, type: 3}
-  - {fileID: 7734791207995850016, guid: 30b9824b8e53b0041b355b037448d6c6, type: 3}
+  - {fileID: 4468016461960279409, guid: 0783b854a9be0ac4eab6ed57e8c10109, type: 3}
   layerMask:
     serializedVersion: 2
     m_Bits: 8
-  gridSize: 3
+  gridSize: 2
   rotateAmount: 45
   materials:
   - {fileID: 2100000, guid: 37a0ec9c54317674d8fac586c549a2e5, type: 2}
@@ -2847,7 +2847,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &857106361
 GameObject:
@@ -3339,8 +3339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dragSpeed: 0.01
   zoomSpeed: 5
-  maxY: 13
-  minY: 5.5
+  maxY: 12
+  minY: 5
 --- !u!1 &992299528
 GameObject:
   m_ObjectHideFlags: 0
@@ -6525,7 +6525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88c4c4438582dc74ea0ffc39b1682bd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
+  playerSpeed: 4
   health: {fileID: 11400000, guid: 4be3bcf38dcabd74c8a84098c111fb24, type: 2}
 --- !u!1 &1743212042
 GameObject:
@@ -8850,7 +8850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2686890238918016027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.924069, y: 0.00000047683716, z: -3.94}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8965,7 +8965,6 @@ GameObject:
   - component: {fileID: 2686890238917976571}
   - component: {fileID: 2686890238927523427}
   - component: {fileID: 1721692850}
-  - component: {fileID: 2686890238927523428}
   - component: {fileID: 2686890238927523429}
   m_Layer: 0
   m_Name: Player
@@ -9091,22 +9090,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!54 &2686890238927523428
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2686890238918016027}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!143 &2686890238927523429
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9118,8 +9101,8 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 2.07
+  m_Radius: 0.7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08

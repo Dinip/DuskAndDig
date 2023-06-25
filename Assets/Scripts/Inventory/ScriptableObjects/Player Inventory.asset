@@ -22,7 +22,7 @@ MonoBehaviour:
         Name: 
         Id: 3
         buffs: []
-      amount: 100
+      amount: 53
     - AllowedItems: 
       item:
         Name: 
@@ -40,13 +40,19 @@ MonoBehaviour:
         Name: IngotIron
         Id: 2
         buffs: []
-      amount: 90
+      amount: 54
     - AllowedItems: 
       item:
         Name: 
         Id: 0
         buffs: []
-      amount: 90
+      amount: 30
+    - AllowedItems: 
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
     - AllowedItems: 
       item:
         Name: 
@@ -58,13 +64,7 @@ MonoBehaviour:
         Name: IngotGold
         Id: 1
         buffs: []
-      amount: 75
-    - AllowedItems: 
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
+      amount: 14
     - AllowedItems: 
       item:
         Name: 

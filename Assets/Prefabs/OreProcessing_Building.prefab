@@ -157,6 +157,7 @@ MonoBehaviour:
     output: {fileID: 11400000, guid: 571b4d2729af47445af270ea87abc0c3, type: 2}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
+  placed: 0
 --- !u!54 &7272130916548426814
 Rigidbody:
   m_ObjectHideFlags: 0

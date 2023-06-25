@@ -165,7 +165,7 @@ public class UpgradeBuildingMenu : MonoBehaviour
         return type switch
         {
             BuildingType.Hospital => "HP/sec",
-            BuildingType.OreProcessing => "sec burn time",
+            BuildingType.OreProcessing => " sec burn time",
             BuildingType.Beacon => "%",
             _ => "",
         };

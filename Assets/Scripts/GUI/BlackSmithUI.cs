@@ -66,7 +66,7 @@ public class BlackSmithUI : MonoBehaviour
     {
         _building = building;
         openLabel.SetActive(building != null);
-        if (_showLabel) openLabel.GetComponentInChildren<TextMeshProUGUI>().text = "Press F to open (Black Smith)";
+        if (_showLabel) openLabel.GetComponentInChildren<TextMeshProUGUI>().text = "Press F to open (Workshop)";
         _inRange = building != null;
 
         if (!_inRange)

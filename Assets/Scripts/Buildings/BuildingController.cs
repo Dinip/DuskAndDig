@@ -51,15 +51,23 @@ public class BuildingController : MonoBehaviour
 
         foreach (var upgradeItem in levelCost.levelUpgrade)
         {
-            foreach (var invSlot in invSlots)
+            var amountToRemove = upgradeItem.amount;
+            foreach (var slot in invSlots)
             {
-                if (invSlot.item.Id == upgradeItem.item.data.Id)
+                if (amountToRemove == 0) break;
+                if (slot.item.Id != upgradeItem.item.data.Id) continue;
+                if (slot.amount >= amountToRemove)
                 {
-                    int newAmount = invSlot.amount - upgradeItem.amount;
-                    invSlot.UpdateSlot(newAmount == 0 ? new Item() : invSlot.item, newAmount);
+                    slot.UpdateSlot(slot.amount - amountToRemove == 0 ? new Item() : slot.item, slot.amount - amountToRemove);
+                    amountToRemove = 0;
+                    break;
                 }
+                amountToRemove -= slot.amount;
+                slot.UpdateSlot(new Item(), 0);
             }
         }
+
+
 
         building.level++;
 
@@ -81,13 +89,9 @@ public class BuildingController : MonoBehaviour
 
         foreach (var upgradeItem in levelCost.levelUpgrade)
         {
-            foreach (var invSlot in invSlots)
-            {
-                if (invSlot.item.Id == upgradeItem.item.data.Id && invSlot.amount >= upgradeItem.amount)
-                {
-                    count++;
-                }
-            }
+            var itemSlots = invSlots.Where(s => s.item.Id == upgradeItem.item.data.Id).ToList();
+            var sum = itemSlots.Sum(s => s.amount);
+            if (sum >= upgradeItem.amount) count++;
         }
 
         return count == levelCost.levelUpgrade.Count;

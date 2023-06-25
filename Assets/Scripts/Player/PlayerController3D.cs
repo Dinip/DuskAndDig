@@ -1,36 +1,67 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController3D : MonoBehaviour
 {
-    private CharacterController controller;
-    private Animator animator;
-
     [SerializeField]
     private float playerSpeed = 2.0f;
 
     [SerializeField]
     private HealthObject health;
 
+    private CharacterController _controller;
+
+    private Animator _animator;
+
+    private Vector3 _moveDirection;
+
+    private float _gravity = 9.81f;
+
+    private float _fallSpeed = 0f;
+
+    private bool _isFalling;
+
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
-        animator = gameObject.GetComponent<Animator>();
+        _controller = gameObject.GetComponent<CharacterController>();
+        _animator = gameObject.GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        Vector3 move = new(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        controller.Move(playerSpeed * Time.deltaTime * move);
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
 
-        if (move != Vector3.zero)
+        _moveDirection = new Vector3(horizontalInput, 0f, verticalInput);
+        _moveDirection.Normalize();
+
+        if (_controller.isGrounded)
         {
-            gameObject.transform.forward = move;
-            if (animator != null) animator.SetInteger("Walking", 1);
+            _isFalling = false;
+            _fallSpeed = 0f;
+
+            _controller.Move(playerSpeed * Time.deltaTime * _moveDirection);
+
+            if (_moveDirection.magnitude > 0)
+            {
+                _animator.SetInteger("Walking", 1);
+                transform.rotation = Quaternion.LookRotation(_moveDirection);
+            }
+            else
+            {
+                _animator.SetInteger("Walking", 0);
+            }
+        }
+        else if (!_isFalling)
+        {
+            _isFalling = true;
+            _fallSpeed = 0f;
         }
         else
         {
-            if (animator != null) animator.SetInteger("Walking", 0);
+            _fallSpeed -= _gravity * Time.deltaTime;
+            _controller.Move(new Vector3(_moveDirection.x, _fallSpeed, _moveDirection.z) * Time.deltaTime);
         }
     }
 

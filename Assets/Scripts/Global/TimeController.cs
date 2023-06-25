@@ -22,27 +22,21 @@ public class TimeController : MonoBehaviour {
     private Light sunLight;
 
     [SerializeField]
-    private float sunriseHour;
-
-    [SerializeField]
-    private float sunsetHour;
-
-    [SerializeField]
     private TimeControllerObject timeControllerObject;
 
     void Start()
     {
-        _sunriseTime = TimeSpan.FromHours(sunriseHour);
-        _sunsetTime = TimeSpan.FromHours(sunsetHour);
+        _sunriseTime = TimeSpan.FromHours(timeControllerObject.SunriseHour);
+        _sunsetTime = TimeSpan.FromHours(timeControllerObject.SunsetHour);
         _currentScene = SceneManager.GetActiveScene().name;
 
         if (_currentScene == "CityBuilder")
         {
-            _timeMultiplier = timeControllerObject.cityBuilderTimeMultiplier;
+            _timeMultiplier = timeControllerObject.CityBuilderTimeMultiplier;
         }
         else
         {
-            _timeMultiplier = timeControllerObject.actionTimeMultiplier;
+            _timeMultiplier = timeControllerObject.ActionTimeMultiplier;
         }
         UpdateDay();
     }
@@ -56,7 +50,7 @@ public class TimeController : MonoBehaviour {
 
     private void ChangeGameMode()
     {
-        if (timeControllerObject.currentTime.Hour >= timeControllerObject.actionStartTime || timeControllerObject.currentTime.Hour < timeControllerObject.cityBuilderStartTime)
+        if (timeControllerObject.currentTime.Hour >= timeControllerObject.ActionStartTime || timeControllerObject.currentTime.Hour < timeControllerObject.CityBuilderStartTime)
         {
             if (_currentScene == "CityBuilder") SceneManager.LoadScene("Action2D");
         }
