@@ -1,9 +1,11 @@
-using System.Linq;
 using TarodevController;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private EventBus eventBus;
+
     [SerializeField]
     private HealthObject health;
 
@@ -32,31 +34,24 @@ public class Player : MonoBehaviour
 
     private PlayerController _playerController;
 
-    private float _beaconMultiplier = 1;
-
     private SpriteRenderer _spriteRenderer;
 
     private void Awake()
     {
         _playerController = GetComponent<PlayerController>();
         _playerController.Attacked += DamageEnemy;
-        var beacons = buildings.Items.FindAll(b => b.buildingType == BuildingType.Beacon);
-        _beaconMultiplier = beacons.Sum(b => b.CurrentMultiplier);
         _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void TakeDamage(float damage)
     {
-        var armor = equipment.GetSlots.FirstOrDefault(x => x.ItemObject.type == ItemType.Armor);
-        if (armor != null)
+        var shieldValue = Utils.ComputePlayerShield(equipment);
+        health.currentHealth -= damage * (1 - (shieldValue / 100));
+        if (health.currentHealth <= 0)
         {
-            var shieldItem = armor.ItemObject.data.buffs.FirstOrDefault(b => b.attribute == Attributes.Shield);
-            float shieldValue = shieldItem.value / 100f;
-
-            health.currentHealth -= damage * (1 - shieldValue);
-            return;
+            health.currentHealth = 0;
+            eventBus.gameOverEvent?.Invoke(true);
         }
-        health.currentHealth -= damage;
     }
 
     public void CollectItem(ItemObject item)
@@ -91,9 +86,7 @@ public class Player : MonoBehaviour
     {
         if (EnemyInSight())
         {
-            var sword = equipment.GetSlots[1].ItemObject.data.buffs.First(f => f.attribute == Attributes.Damage);
-            var damage = sword.value + sword.value * (_beaconMultiplier / 100);
-            Debug.Log($"Damage: {damage}");
+            var damage = Utils.ComputePlayerDamage(equipment, buildings);
             _enemy.TakeDamage(damage);
         }
     }

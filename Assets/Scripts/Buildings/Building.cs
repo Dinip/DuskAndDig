@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Utils;
 
 [Serializable]
 public class Building
@@ -35,14 +36,7 @@ public class Building
 [Serializable]
 public class UpgradeBuildingLevel
 {
-    public List<UpgradeBuildingItem> levelUpgrade;
-}
-
-[Serializable]
-public class UpgradeBuildingItem
-{
-    public ItemObject item;
-    public int amount;
+    public List<ItemObjectAmount> levelUpgrade;
 }
 
 public enum BuildingType

@@ -3,7 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TimeController : MonoBehaviour {
+public class TimeController : MonoBehaviour
+{
     private TimeSpan _sunriseTime;
 
     private TimeSpan _sunsetTime;
@@ -105,7 +106,7 @@ public class TimeController : MonoBehaviour {
 
         if (timeControllerObject.currentTime.TimeOfDay > _sunriseTime && timeControllerObject.currentTime.TimeOfDay < _sunsetTime)
         {
-            var sunriseToSensetDuration = CalculateTimeDiff(_sunsetTime, _sunriseTime);
+            var sunriseToSensetDuration = CalculateTimeDiff(_sunriseTime, _sunsetTime);
             var timeSinceSunrise = CalculateTimeDiff(_sunriseTime, timeControllerObject.currentTime.TimeOfDay);
 
             var percentage = timeSinceSunrise.TotalMinutes / sunriseToSensetDuration.TotalMinutes;

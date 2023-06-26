@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    //[SerializeField]
-    //private GameManagerObject gm;
+    [SerializeField]
+    private GameManagerObject gm;
 
     [SerializeField]
     private GameObject startMenu;
@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        gm.ResetGame();
         startMenu.SetActive(false);
         SceneManager.LoadScene("Action2D");
     }
@@ -50,7 +51,7 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             ShowInitialMenu();
         }

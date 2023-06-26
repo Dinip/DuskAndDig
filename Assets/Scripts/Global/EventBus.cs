@@ -33,6 +33,9 @@ public class EventBus : ScriptableObject
     [NonSerialized]
     public UnityEvent<bool> buildingUIOpened;
 
+    [NonSerialized]
+    public UnityEvent<bool> gameOverEvent;
+
     private void OnEnable()
     {
         selectedBuilding ??= new UnityEvent<GameObject>();
@@ -44,6 +47,7 @@ public class EventBus : ScriptableObject
         onBlackSmithRange ??= new UnityEvent<Building>();
         blackSmithProgress ??= new UnityEvent<float>();
         buildingUIOpened ??= new UnityEvent<bool>();
+        gameOverEvent ??= new UnityEvent<bool>();
 
         buildingUIOpened.AddListener(AnyMenuOpen);
     }

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216e51707378aa845bcc7f01da237fa2, type: 3}
+  m_Name: GameManager
+  m_EditorClassIdentifier: 
+  inventories:
+  - {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
+  - {fileID: 11400000, guid: 43835e75255697f44b8c11400e3fd98a, type: 2}
+  - {fileID: 11400000, guid: ac27662e7f1e582498bb9f80a05fb5ae, type: 2}
+  - {fileID: 11400000, guid: 571b4d2729af47445af270ea87abc0c3, type: 2}
+  - {fileID: 11400000, guid: 5f251cd21c7494847b87bc49c22527c1, type: 2}
+  - {fileID: 11400000, guid: 5b482e0b3cd20f646ac799215fcf17cd, type: 2}
+  initialEquipment:
+  - item: {fileID: 11400000, guid: 4004795b206033b4b8f201b1d6aa08fd, type: 2}
+    amount: 1
+  timeControllerObj: {fileID: 11400000, guid: 2fd5304e93ccb4648a7b76db10eba927, type: 2}
+  buildings: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}

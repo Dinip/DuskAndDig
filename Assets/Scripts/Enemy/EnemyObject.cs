@@ -21,22 +21,21 @@ public class EnemyObject : ScriptableObject
     [SerializeField]
     private float attackCooldown = 2f;
 
-    public float Health { get; private set; }
-    public float Damage { get; private set; }
+    public float Health
+    {
+        get
+        {
+            return baseHealth + (timeObject.currentDay - 1) * healthMultiplier * 30;
+        }
+    }
+    public float Damage
+    {
+        get
+        {
+            return baseDamage + (timeObject.currentDay - 1) * damageMultiplier * 10;
+        }
+    }
     public float AttackCooldown => attackCooldown;
-
-    private void OnEnable()
-    {
-        ComputeValues();
-    }
-
-    private void ComputeValues()
-    {
-        int day = timeObject.currentDay > 7 ? 7 : timeObject.currentDay;
-
-        Health = baseHealth + (day - 1) * healthMultiplier * 30;
-        Damage = baseDamage + (day - 1) * damageMultiplier * 10;
-    }
 }
 
 //b   100 20
