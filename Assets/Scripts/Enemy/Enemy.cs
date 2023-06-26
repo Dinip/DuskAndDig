@@ -106,10 +106,11 @@ public class Enemy : MonoBehaviour
         {
             _enemyPatrol.enabled = false;
             _animator.SetTrigger("die");
-        } else
-        {
-            _animator.SetTrigger("hurt");
         }
+        //else
+        //{
+        //_animator.SetTrigger("hurt");
+        //}
     }
 
     // used in animation event

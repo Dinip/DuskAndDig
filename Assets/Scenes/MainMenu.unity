@@ -4234,17 +4234,17 @@ MonoBehaviour:
       m_Calls: []
   m_text: "The Dusk and Dig Game is an exciting combination of a 3D city building
     game and a 2D action game. This unique hybrid offers diverse gameplay experiences
-    and challenges.\n\n\u2022 Day/Night System\nThe game features a dynamic day/night
-    system. From 8:00 to 20:00, the game is in 3D mode, allowing you to build and
-    manage your city and buildings. During the remaining hours, it switches to a
-    2D action mode, where you explore caverns, getter materials and engage in thrilling
-    combat.\n\n\u2022 Time Balance\nWhile both the city building and action phases
-    last for 12 hours, the time is not balanced equally. City building time is compressed,
-    with each in-game hour representing 15 seconds (12 in-game hours = 3 minutes).
-    In contrast, the action phase is more extended, with each in-game hour representing
-    25 seconds (12 in-game hours = 5 minutes).\n\n\u2022 City Building\r\nDuring
-    the city building phase, you can construct and manage various buildings to develop
-    your city. There are four essential buildings available:"
+    and challenges.\r\n\r\n\u2022 Day/Night System\r\nThe game features a dynamic
+    day/night system. From 8:00 to 20:00, the game is in 3D mode, allowing you to
+    build and manage your city and buildings. During the remaining hours, it switches
+    to a 2D action mode, where you explore caverns, getter materials and engage in
+    thrilling combat.\r\n\r\n\u2022 Time Balance\r\nWhile both the city building
+    and action phases last for 12 hours, the time is not balanced equally. City building
+    time is compressed, with each in-game hour representing 20 seconds (12 in-game
+    hours = 4 minutes). In contrast, the action phase is more extended, with each
+    in-game hour representing 30 seconds (12 in-game hours = 6 minutes).\r\n\r\n\u2022
+    City Building\r\nDuring the city building phase, you can construct and manage
+    various buildings to develop your city. There are four essential buildings available:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}

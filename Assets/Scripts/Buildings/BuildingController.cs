@@ -243,7 +243,7 @@ public class BuildingController : MonoBehaviour
         {
             if (slot.amount >= amountToRemove)
             {
-                slot.UpdateSlot(slot.item, slot.amount - amountToRemove);
+                slot.UpdateSlot(slot.amount == amountToRemove ? new Item() : slot.item, slot.amount - amountToRemove);
                 amountToRemove = 0;
                 break;
             }
