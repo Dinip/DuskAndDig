@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -23,6 +25,12 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject[] buttons; // 0 = prev, 1 = next
 
+    [SerializeField]
+    private Slider slider;
+
+    [SerializeField]
+    private TextMeshProUGUI sliderText;
+
     private int _currentTextIdx = 0;
 
     void Awake()
@@ -30,6 +38,19 @@ public class MainMenu : MonoBehaviour
 #if !UNITY_EDITOR
         StartCoroutine("MoveToPrimaryDisplay");
 #endif
+    }
+
+    private void OnEnable()
+    {
+        var vol = PlayerPrefs.GetFloat("volume", .8f);
+        sliderText.text = $"Volume: {vol*100:0.00}%";
+        slider.value = vol*100;
+        slider.onValueChanged.AddListener(HandleVolumeSlider);
+    }
+
+    private void OnDisable()
+    {
+        slider.onValueChanged.RemoveListener(HandleVolumeSlider);
     }
 
     private IEnumerable MoveToPrimaryDisplay()
@@ -115,5 +136,11 @@ public class MainMenu : MonoBehaviour
             buttons[0].SetActive(false);
         }
         buttons[1].SetActive(true);
+    }
+
+    public void HandleVolumeSlider(float volume)
+    {
+        sliderText.text = $"Volume: {volume:0.00}%";
+        PlayerPrefs.SetFloat("volume", volume/100);
     }
 }

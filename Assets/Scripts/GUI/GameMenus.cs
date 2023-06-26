@@ -42,6 +42,8 @@ public class GameMenus : MonoBehaviour
     private void OnEnable()
     {
         eventBus.gameOverEvent.AddListener(ShowGameOver);
+        var vol = PlayerPrefs.GetFloat("volume", .8f);
+        AudioListener.volume = vol;
     }
 
     private void OnDisable()

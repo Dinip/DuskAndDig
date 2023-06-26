@@ -2,6 +2,11 @@
 
 The Dusk and Dig Game is an exciting combination of a 3D city building game and a 2D action game. This unique hybrid offers diverse gameplay experiences and challenges.
 
+## Online Version and Builds
+An online version of the game is available at [dusk-and-dig.dinip.pt](https://dusk-and-dig.dinip.pt/).
+
+Additionally, you can find builds of the game on the [Releases tab](https://github.com/Dinip/DuskAndDig/releases).
+
 ## Day/Night System
 The game features a dynamic day/night system. From 8:00 to 20:00, the game is in 3D mode, allowing you to build and manage your city and buildings. During the remaining hours, it switches to a 2D action mode, where you explore caverns, getter materials and engage in thrilling combat.
 
