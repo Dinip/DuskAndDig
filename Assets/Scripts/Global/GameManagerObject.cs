@@ -21,6 +21,9 @@ public class GameManagerObject : ScriptableObject
     [SerializeField]
     private BuildingsSet buildings;
 
+    [SerializeField]
+    private HealthObject playerHealth;
+
     private bool _isPaused = false;
 
     public bool IsPaused => _isPaused;
@@ -36,8 +39,7 @@ public class GameManagerObject : ScriptableObject
     {
         foreach (var inventory in inventories)
         {
-            inventory.Clear();
-            inventory.Save();
+            inventory.ClearNoRender();
             if (inventory.type == InterfaceType.Equipment)
             {
                 PopulateDefaultEquipment(inventory);
@@ -46,6 +48,7 @@ public class GameManagerObject : ScriptableObject
         buildings.Clear();
         timeControllerObj.currentDay = 1;
         timeControllerObj.currentTime = DateTime.Now.Date;
+        playerHealth.ResetHealth();
     }
 
     private void PopulateDefaultEquipment(InventoryObject inv)
@@ -56,7 +59,7 @@ public class GameManagerObject : ScriptableObject
             {
                 if (slot.AllowedItems.Contains(itemAmount.item.type))
                 {
-                    slot.UpdateSlot(itemAmount.item.CreateItem(), itemAmount.amount);
+                    slot.UpdateSlotNoRender(itemAmount.item.CreateItem(), itemAmount.amount);
                     break;
                 }
             }

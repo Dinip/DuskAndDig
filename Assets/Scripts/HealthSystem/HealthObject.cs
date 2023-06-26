@@ -9,4 +9,9 @@ public class HealthObject : ScriptableObject
     public float currentHealth;
 
     public float MaxHealth { get { return maxHealth; } }
+
+    public void ResetHealth()
+    {
+        currentHealth = maxHealth;
+    }
 }

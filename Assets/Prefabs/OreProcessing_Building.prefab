@@ -143,18 +143,18 @@ MonoBehaviour:
     levelCost:
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 1e2a53caa661b114aac63f933d8f5a89, type: 2}
-        amount: 5
-    - levelUpgrade:
-      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
-        amount: 10
-    - levelUpgrade:
-      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
         amount: 10
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
-        amount: 10
+        amount: 25
+    - levelUpgrade:
       - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
-        amount: 10
+        amount: 25
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
+        amount: 50
+      - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
+        amount: 25
     input: {fileID: 11400000, guid: ac27662e7f1e582498bb9f80a05fb5ae, type: 2}
     output: {fileID: 11400000, guid: 571b4d2729af47445af270ea87abc0c3, type: 2}
     Position: {x: 0, y: 0, z: 0}

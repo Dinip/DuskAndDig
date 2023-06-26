@@ -25,3 +25,4 @@ MonoBehaviour:
     amount: 1
   timeControllerObj: {fileID: 11400000, guid: 2fd5304e93ccb4648a7b76db10eba927, type: 2}
   buildings: {fileID: 11400000, guid: b595c424b4b19404485c271bc9cccfc5, type: 2}
+  playerHealth: {fileID: 11400000, guid: 4be3bcf38dcabd74c8a84098c111fb24, type: 2}

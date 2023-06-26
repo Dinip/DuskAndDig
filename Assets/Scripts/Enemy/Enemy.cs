@@ -27,11 +27,14 @@ public class Enemy : MonoBehaviour
 
     private float _health;
 
+    private AudioSource _audioSource;
+
     private void Awake()
     {
         _health = enemyObject.Health;
         _animator = GetComponent<Animator>();
         _enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,6 +48,7 @@ public class Enemy : MonoBehaviour
             {
                 _cooldownTimer = 0;
                 _animator.SetTrigger("meleeAttack");
+                _audioSource.Play();
             }
         }
 
@@ -81,7 +85,7 @@ public class Enemy : MonoBehaviour
     }
 
     // used in animation event
-    private void DamagePlayer()
+    public void DamagePlayer()
     {
         if (PlayerInSight())
         {
@@ -100,7 +104,7 @@ public class Enemy : MonoBehaviour
     }
 
     // used in animation event
-    private void Die()
+    public void Die()
     {
         var parent = gameObject.transform.parent.gameObject;
         Destroy(gameObject);

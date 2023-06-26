@@ -51,9 +51,10 @@ public class BuildBuildingMenu : MonoBehaviour
         var b = buildings[_buildingIdx];
         var bc = b.GetComponent<BuildingController>();
 
-        if (bc.building.buildingType != BuildingType.Beacon && buildingsSet.Items.FirstOrDefault(f => f.buildingType == bc.building.buildingType) != null)
+        if ((bc.building.buildingType == BuildingType.Hospital || bc.building.buildingType == BuildingType.BlackSmith) &&
+            buildingsSet.Items.FirstOrDefault(f => f.buildingType == bc.building.buildingType) != null)
         {
-            missingResources.text = "Building Already Placed";
+            missingResources.text = "Only 1 Building Of Type Allowed";
             missingResources.enabled = true;
             return;
         }

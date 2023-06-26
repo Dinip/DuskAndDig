@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -20,6 +18,12 @@ public class MiningSystem : MonoBehaviour
     [SerializeField]
     private GameObject prefab;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip[] miningSounds;
+
     private Vector3Int _playerPos;
 
     private Vector3Int _highlightedTilePos;
@@ -38,7 +42,7 @@ public class MiningSystem : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _highlighted)
         {
             var mouseGridPos = GetMousePosOnGrid();
-            if (InRange(mouseGridPos, _playerPos, new Vector3Int(3, 3, 0)))
+            if (InRange(mouseGridPos, _playerPos, new Vector3Int(3, 4, 0)))
             {
                 Destroy(mouseGridPos);
             }
@@ -60,7 +64,7 @@ public class MiningSystem : MonoBehaviour
         {
             tempTilemap.SetTile(_highlightedTilePos, null);
 
-            if(!InRange(mouseGridPos, _playerPos, new Vector3Int(4, 4, 0)))
+            if (!InRange(mouseGridPos, _playerPos, new Vector3Int(4, 4, 0)))
             {
                 _highlightedTilePos = new Vector3Int(999, 999, 999);
                 _highlighted = false;
@@ -71,7 +75,7 @@ public class MiningSystem : MonoBehaviour
 
             if (!tile || tile is not RuleTileWithData || (tile as RuleTileWithData).filler)
             {
-                _highlightedTilePos = new Vector3Int(999,999,999);
+                _highlightedTilePos = new Vector3Int(999, 999, 999);
                 _highlighted = false;
                 return;
             }
@@ -90,7 +94,6 @@ public class MiningSystem : MonoBehaviour
 
     //private bool CheckCondition(RuleTileWithData tile, ItemObject currentItem)
     //{
-    //    if(currentItem.type = )
     //}
 
     private void Destroy(Vector3Int position)
@@ -99,6 +102,7 @@ public class MiningSystem : MonoBehaviour
         bool broke = tilemapState.BreakTile(position);
         if (broke)
         {
+            audioSource.PlayOneShot(miningSounds[1]);
             mainTilemap.SetTile(position, null);
             tempTilemap.SetTile(position, null);
             _highlighted = false;
@@ -106,8 +110,10 @@ public class MiningSystem : MonoBehaviour
             var pos = mainTilemap.GetCellCenterWorld(position);
             var item = Instantiate(prefab, pos, Quaternion.identity);
             item.GetComponent<Loot>().Initialize(tile.itemObject);
-        } else
+        }
+        else
         {
+            audioSource.PlayOneShot(miningSounds[0]);
             mainTilemap.SetTile(position, tile.nextState);
         }
     }

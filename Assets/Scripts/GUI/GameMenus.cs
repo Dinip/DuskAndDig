@@ -1,8 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,21 +79,22 @@ public class GameMenus : MonoBehaviour
     public void LoadMainMenu()
     {
         gameManager.ResetGame();
-
-        loseMenuUI.SetActive(false);
-        pauseMenuUI.SetActive(false);
-        gameManager.SetPause(false);
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(WaitChangeScene("MainMenu", 0.5f));
     }
 
     public void ResetGame()
     {
         gameManager.ResetGame();
+        StartCoroutine(WaitChangeScene(SceneManager.GetActiveScene().name, 0.5f));
+    }
 
+    private IEnumerator WaitChangeScene(string scene, float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
         loseMenuUI.SetActive(false);
         pauseMenuUI.SetActive(false);
         gameManager.SetPause(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(scene);
     }
 
     private void ShowGameOver(bool _)

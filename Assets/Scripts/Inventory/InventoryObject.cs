@@ -117,6 +117,11 @@ public class InventoryObject : ScriptableObject
     {
         Container.Clear();
     }
+
+    public void ClearNoRender()
+    {
+        Container.ClearNoRender();
+    }
 }
 
 public delegate void SlotUpdated(InventorySlot slot);
@@ -130,6 +135,14 @@ public class Inventory
         for (int i = 0; i < Slots.Length; i++)
         {
             Slots[i].RemoveItem();
+        }
+    }
+
+    public void ClearNoRender()
+    {
+        for (int i = 0; i < Slots.Length; i++)
+        {
+            Slots[i].RemoveItemNoRender();
         }
     }
 }
@@ -188,9 +201,20 @@ public class InventorySlot
         OnAfterUpdate?.Invoke(this);
     }
 
+    public void UpdateSlotNoRender(Item item, int amount)
+    {
+        this.item = item;
+        this.amount = amount;
+    }
+
     public void RemoveItem()
     {
         UpdateSlot(new Item(), 0);
+    }
+
+    public void RemoveItemNoRender()
+    {
+        UpdateSlotNoRender(new Item(), 0);
     }
 
     public void AddAmount(int value)

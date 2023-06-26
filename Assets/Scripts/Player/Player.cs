@@ -28,6 +28,12 @@ public class Player : MonoBehaviour
     private BoxCollider2D boxCollider;
 
     [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip[] sounds;
+
+    [SerializeField]
     private LayerMask enemyLayer;
 
     private Enemy _enemy;
@@ -57,6 +63,7 @@ public class Player : MonoBehaviour
     public void CollectItem(ItemObject item)
     {
         inventory.AddItem(item.CreateItem(), 1);
+        audioSource.PlayOneShot(sounds[0]);
     }
 
     private bool EnemyInSight()
