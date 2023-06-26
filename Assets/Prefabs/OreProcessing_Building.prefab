@@ -133,15 +133,17 @@ MonoBehaviour:
   itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
   building:
     buildingType: 0
-    level: 1
+    level: 0
     maxLevel: 4
     levelMultipler:
-    - 20
-    - 17.5
+    - 15
     - 12.5
-    - 5
+    - 9
+    - 4.5
     levelCost:
-    - levelUpgrade: []
+    - levelUpgrade:
+      - item: {fileID: 11400000, guid: 1e2a53caa661b114aac63f933d8f5a89, type: 2}
+        amount: 5
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
         amount: 10

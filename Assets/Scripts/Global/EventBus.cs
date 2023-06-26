@@ -39,6 +39,9 @@ public class EventBus : ScriptableObject
     [NonSerialized]
     public UnityEvent<int> placeBuilding;
 
+    [NonSerialized]
+    public UnityEvent<bool> gamePaused;
+
     private void OnEnable()
     {
         selectedBuilding ??= new UnityEvent<GameObject>();
@@ -52,13 +55,16 @@ public class EventBus : ScriptableObject
         buildingUIOpened ??= new UnityEvent<bool>();
         gameOverEvent ??= new UnityEvent<bool>();
         placeBuilding ??= new UnityEvent<int>();
+        gamePaused ??= new UnityEvent<bool>();
 
         buildingUIOpened.AddListener(AnyMenuOpen);
+        gamePaused.AddListener(AnyMenuOpen);
     }
 
     private void OnDisable()
     {
         buildingUIOpened.RemoveListener(AnyMenuOpen);
+        gamePaused.RemoveListener(AnyMenuOpen);
     }
 
     private void AnyMenuOpen(bool open)

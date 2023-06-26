@@ -35573,6 +35573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cf148cb4f31e55489566cd7acf7dbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
   inventory: {fileID: 357275580}
   equipment: {fileID: 44791188}
 --- !u!1 &1513136715

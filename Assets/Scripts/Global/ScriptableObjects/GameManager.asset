@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216e51707378aa845bcc7f01da237fa2, type: 3}
   m_Name: GameManager
   m_EditorClassIdentifier: 
+  eventBus: {fileID: 11400000, guid: 8204146e4a6b9bc4cb041760c0d336f9, type: 2}
   inventories:
   - {fileID: 11400000, guid: ba391aef18194db419840aa8245becc2, type: 2}
   - {fileID: 11400000, guid: 43835e75255697f44b8c11400e3fd98a, type: 2}

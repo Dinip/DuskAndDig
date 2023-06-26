@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
 
         Gizmos.DrawWireCube(boxCollider.bounds.center + colliderDistance * range * (!Application.isPlaying ? 1 : (_spriteRenderer.flipX ? -1 : 1)) * transform.right,
                 new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
-
     }
 
     private void DamageEnemy()

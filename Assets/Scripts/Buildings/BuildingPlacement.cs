@@ -121,6 +121,10 @@ public class BuildingPlacement : MonoBehaviour
         _pendingObject.GetComponent<MeshRenderer>().material = materials[2];
         _pendingObject.GetComponent<MeshCollider>().enabled = true;
         var bc = _pendingObject.GetComponent<BuildingController>();
+        if (!bc.UpgradeBuilding())
+        {
+            _pendingObject = null;
+        }
         var b = bc.building;
         b.Position = _pendingObject.transform.position;
         b.Rotation = _pendingObject.transform.rotation;

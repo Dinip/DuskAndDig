@@ -32,4 +32,16 @@ public class Utils
         public ItemObject item;
         public int amount;
     }
+
+    public static string BuildingText(Building building, bool next = false)
+    {
+        var value = next ? building.NextMultiplier : building.CurrentMultiplier;
+        return building.buildingType switch
+        {
+            BuildingType.Hospital => $"{value}HP/sec",
+            BuildingType.OreProcessing => $"{value} sec burn time",
+            BuildingType.Beacon => $"+{value}% attack dmg",
+            _ => "",
+        };
+    }
 }

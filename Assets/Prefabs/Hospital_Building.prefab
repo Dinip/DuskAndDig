@@ -133,7 +133,7 @@ MonoBehaviour:
   itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
   building:
     buildingType: 1
-    level: 1
+    level: 0
     maxLevel: 4
     levelMultipler:
     - 1
@@ -159,6 +159,7 @@ MonoBehaviour:
     output: {fileID: 0}
     Position: {x: 0, y: 0, z: 0}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
+  placed: 0
 --- !u!54 &-1124485912231067718
 Rigidbody:
   m_ObjectHideFlags: 0

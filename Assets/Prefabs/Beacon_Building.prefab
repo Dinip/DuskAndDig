@@ -133,7 +133,7 @@ MonoBehaviour:
   itemMappingSet: {fileID: 11400000, guid: ff0c39ea565525b4f84f74c4c6cc7858, type: 2}
   building:
     buildingType: 2
-    level: 1
+    level: 0
     maxLevel: 4
     levelMultipler:
     - 5

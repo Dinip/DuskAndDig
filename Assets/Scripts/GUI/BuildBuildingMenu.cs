@@ -24,7 +24,7 @@ public class BuildBuildingMenu : MonoBehaviour
     private GameObject[] upgradeUIs;
 
     [SerializeField]
-    private GameObject[] atualIcons;
+    private GameObject[] nextIcons;
 
     [SerializeField]
     private ItemMappingSet itemMappingSet;
@@ -41,6 +41,7 @@ public class BuildBuildingMenu : MonoBehaviour
     {
         _buildingIdx = -1;
         buildingMenu.SetActive(false);
+        selectionMenu.SetActive(true);
     }
 
     public void Build()
@@ -52,7 +53,7 @@ public class BuildBuildingMenu : MonoBehaviour
 
         if (bc.building.buildingType != BuildingType.Beacon && buildingsSet.Items.FirstOrDefault(f => f.buildingType == bc.building.buildingType) != null)
         {
-            missingResources.text = "Building Already Placed"; 
+            missingResources.text = "Building Already Placed";
             missingResources.enabled = true;
             return;
         }
@@ -104,39 +105,28 @@ public class BuildBuildingMenu : MonoBehaviour
         {
             nextMultiplier.enabled = false;
 
-            //actualMultiplier.text = $"+{building.CurrentMultiplier}%";
-            var currentItems = itemMappingSet.Items.FindAll(x => x.buildingType == BuildingType.BlackSmith && x.level <= building.level);
-            var startCurrentPoint = currentItems.Count != atualIcons.Length ? (atualIcons.Length / 2) - (currentItems.Count / 2) : 0;
-            for (int i = 0; i < currentItems.Count; i++)
+            var nextItems = itemMappingSet.Items.FindAll(x => x.buildingType == BuildingType.BlackSmith && x.level == building.level + 1);
+            var startNextPoint = nextItems.Count != nextIcons.Length ? (nextIcons.Length / 2) - (nextItems.Count / 2) : 0;
+            for (int i = 0; i < nextItems.Count; i++)
             {
-                atualIcons[startCurrentPoint + i].SetActive(true);
-                atualIcons[startCurrentPoint + i].GetComponent<Image>().sprite = currentItems[i].to.uiDisplay;
+                nextIcons[startNextPoint + i].SetActive(true);
+                nextIcons[startNextPoint + i].GetComponent<Image>().sprite = nextItems[i].to.uiDisplay;
             }
+            return;
         }
 
         nextMultiplier.enabled = true;
         ToggleUpgradeIcons();
-        nextMultiplier.text = $"{building.NextMultiplier}{BuildingText(building.buildingType)}";
+        nextMultiplier.text = Utils.BuildingText(building, true);
 
     }
 
     private void ToggleUpgradeIcons(bool atual = false, bool next = false)
     {
-        for (int i = 0; i < atualIcons.Length; i++)
+        for (int i = 0; i < nextIcons.Length; i++)
         {
-            atualIcons[i].SetActive(atual);
+            nextIcons[i].SetActive(atual);
         }
-    }
-
-    private string BuildingText(BuildingType type)
-    {
-        return type switch
-        {
-            BuildingType.Hospital => "HP/sec",
-            BuildingType.OreProcessing => " sec burn time",
-            BuildingType.Beacon => "%",
-            _ => "",
-        };
     }
 
     public void SelectBuilding(int index)
@@ -149,5 +139,14 @@ public class BuildBuildingMenu : MonoBehaviour
 
         selectionMenu.SetActive(false);
         buildingMenu.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            selectionMenu.SetActive(!selectionMenu.activeSelf);
+            eventBus.buildingUIOpened?.Invoke(selectionMenu.activeSelf);
+        }
     }
 }

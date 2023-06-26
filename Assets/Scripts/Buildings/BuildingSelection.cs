@@ -9,16 +9,20 @@ public class BuildingSelection : MonoBehaviour
 
     private bool _anyMenuOpen;
 
+    private bool _paused;
+
     private void OnEnable()
     {
         eventBus.selectedBuilding.AddListener(SelectObject);
         eventBus.buildingUIOpened.AddListener(AnyMenuOpen);
+        eventBus.gamePaused.AddListener(HandlePause);
     }
 
     private void OnDisable()
     {
         eventBus.selectedBuilding.RemoveListener(SelectObject);
         eventBus.buildingUIOpened.RemoveListener(AnyMenuOpen);
+        eventBus.gamePaused.RemoveListener(HandlePause);
     }
 
     private void AnyMenuOpen(bool open)
@@ -26,9 +30,14 @@ public class BuildingSelection : MonoBehaviour
         _anyMenuOpen = open;
     }
 
+    private void HandlePause(bool paused)
+    {
+        _paused = paused;
+    }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !_anyMenuOpen)
+        if (Input.GetMouseButtonDown(0) && !_anyMenuOpen && !_paused)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             // raycast from camera to mouse position
@@ -38,7 +47,7 @@ public class BuildingSelection : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetMouseButtonDown(1))
         {
             eventBus.selectedBuilding.Invoke(null);
         }

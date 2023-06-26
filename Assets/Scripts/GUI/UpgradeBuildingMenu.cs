@@ -137,14 +137,14 @@ public class UpgradeBuildingMenu : MonoBehaviour
         nextMultiplier.enabled = true;
         ToggleUpgradeIcons();
 
-        actualMultiplier.text = $"{building.CurrentMultiplier}{BuildingText(building.buildingType)}";
+        actualMultiplier.text = Utils.BuildingText(building);
         if (building.level + 1 > building.maxLevel)
         {
             nextMultiplier.text = "Maxed Out";
         }
         else
         {
-            nextMultiplier.text = $"{building.NextMultiplier}{BuildingText(building.buildingType)}";
+            nextMultiplier.text = Utils.BuildingText(building, true);
         }
     }
 
@@ -158,16 +158,5 @@ public class UpgradeBuildingMenu : MonoBehaviour
         {
             nextIcons[i].SetActive(next);
         }
-    }
-
-    private string BuildingText(BuildingType type)
-    {
-        return type switch
-        {
-            BuildingType.Hospital => "HP/sec",
-            BuildingType.OreProcessing => " sec burn time",
-            BuildingType.Beacon => "%",
-            _ => "",
-        };
     }
 }

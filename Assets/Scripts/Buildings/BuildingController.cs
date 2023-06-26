@@ -67,8 +67,6 @@ public class BuildingController : MonoBehaviour
             }
         }
 
-
-
         building.level++;
 
         return true;
@@ -146,6 +144,7 @@ public class BuildingController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!placed) return;
         OreProcessing();
         ItemCrafting();
     }

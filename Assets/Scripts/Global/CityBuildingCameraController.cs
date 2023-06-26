@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CityBuildingCameraController : MonoBehaviour
 {
+    [SerializeField]
+    private EventBus eventBus;
+
     [SerializeField]
     private float dragSpeed = 2;
 
@@ -22,8 +23,26 @@ public class CityBuildingCameraController : MonoBehaviour
 
     private Vector3 previousMousePosition;
 
+    private bool _paused;
+
+    private void OnEnable()
+    {
+        eventBus.gamePaused.AddListener(HandlePause);
+    }
+
+    private void OnDisable()
+    {
+        eventBus.gamePaused.RemoveListener(HandlePause);
+    }
+
+    private void HandlePause(bool paused)
+    {
+        _paused = paused;
+    }
+
     void Update()
     {
+        if (_paused) return;
         HandleCameraDrag();
         HandleCameraZoom();
     }

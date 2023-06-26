@@ -36,12 +36,15 @@ public class BlackSmithUI : MonoBehaviour
 
     private ItemToItem _currentCraft;
 
+    private bool _paused;
+
     private void OnEnable()
     {
         eventBus.onBlackSmithRange.AddListener(InRange);
         eventBus.blackSmithProgress.AddListener(BlackSmithProcessingProgress);
         eventBus.selectedBuilding.AddListener(ShowLabel);
         eventBus.itemToCraft.AddListener(SelectedCraft);
+        eventBus.gamePaused.AddListener(HandlePause);
     }
 
     private void OnDisable()
@@ -50,6 +53,7 @@ public class BlackSmithUI : MonoBehaviour
         eventBus.blackSmithProgress.RemoveListener(BlackSmithProcessingProgress);
         eventBus.selectedBuilding.RemoveListener(ShowLabel);
         eventBus.itemToCraft.RemoveListener(SelectedCraft);
+        eventBus.gamePaused.RemoveListener(HandlePause);
     }
 
     private void SelectedCraft(ItemToItem item)
@@ -60,6 +64,23 @@ public class BlackSmithUI : MonoBehaviour
     private void ShowLabel(GameObject obj)
     {
         _showLabel = obj == null;
+    }
+
+    private void HandlePause(bool paused)
+    {
+        _paused = paused;
+        if (paused)
+        {
+            menu.SetActive(false);
+            openLabel.SetActive(false);
+        }
+        else
+        {
+            if (_inRange && _showLabel)
+            {
+                openLabel.GetComponentInChildren<TextMeshProUGUI>().text = "Press F to open (Workshop)";
+            }
+        }
     }
 
     private void InRange(Building building)
@@ -92,19 +113,12 @@ public class BlackSmithUI : MonoBehaviour
 
     private void Update()
     {
-        if (_inRange && Input.GetKeyDown(KeyCode.F))
+        if (_inRange && !_paused && Input.GetKeyDown(KeyCode.F))
         {
             menu.SetActive(!menu.activeSelf);
             openLabel.SetActive(!menu.activeSelf);
             eventBus.buildingUIOpened?.Invoke(menu.activeSelf);
             if (menu.activeSelf) LoadSlots();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            menu.SetActive(false);
-            eventBus.buildingUIOpened?.Invoke(false);
-            if (_inRange) openLabel.SetActive(true);
         }
     }
 

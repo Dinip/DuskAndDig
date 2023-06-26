@@ -7,6 +7,9 @@ using static Utils;
 public class GameManagerObject : ScriptableObject
 {
     [SerializeField]
+    private EventBus eventBus;
+
+    [SerializeField]
     private InventoryObject[] inventories;
 
     [SerializeField]
@@ -24,6 +27,7 @@ public class GameManagerObject : ScriptableObject
 
     public void SetPause(bool paused)
     {
+        eventBus.gamePaused.Invoke(paused);
         _isPaused = paused;
         Time.timeScale = paused ? 0f : 1f;
     }
