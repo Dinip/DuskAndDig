@@ -1,5 +1,5 @@
-using System;
-using TMPro;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,9 +14,33 @@ public class MainMenu : MonoBehaviour
     [SerializeField]
     private GameObject settingsMenu;
 
-    private void Start()
+    [SerializeField]
+    private GameObject howToPlayMenu;
+
+    [SerializeField]
+    private GameObject[] texts;
+
+    [SerializeField]
+    private GameObject[] buttons; // 0 = prev, 1 = next
+
+    private int _currentTextIdx = 0;
+
+    void Awake()
     {
-        Cursor.visible = true;
+#if !UNITY_EDITOR
+        StartCoroutine("MoveToPrimaryDisplay");
+#endif
+    }
+
+    private IEnumerable MoveToPrimaryDisplay()
+    {
+        List<DisplayInfo> displays = new();
+        Screen.GetDisplayLayout(displays);
+        if (displays?.Count > 0)
+        {
+            var moveOperation = Screen.MoveMainWindowTo(displays[0], new Vector2Int(displays[0].width / 2, displays[0].height / 2));
+            yield return moveOperation;
+        }
     }
 
     public void StartGame()
@@ -32,7 +56,6 @@ public class MainMenu : MonoBehaviour
         settingsMenu.SetActive(true);
     }
 
-
     public void ExitGame()
     {
         Application.Quit();
@@ -41,12 +64,25 @@ public class MainMenu : MonoBehaviour
 #endif
     }
 
-
     public void ShowInitialMenu()
     {
         startMenu.SetActive(true);
-        //difficultyMenu.SetActive(false);
+        howToPlayMenu.SetActive(false);
         settingsMenu.SetActive(false);
+    }
+
+    public void ShowHelpMenu()
+    {
+        foreach (var t in texts)
+        {
+            t.SetActive(false);
+        }
+        startMenu.SetActive(false);
+        howToPlayMenu.SetActive(true);
+        _currentTextIdx = 0;
+        texts[_currentTextIdx].SetActive(true);
+        buttons[0].SetActive(false);
+        buttons[1].SetActive(true);
     }
 
     private void Update()
@@ -55,5 +91,29 @@ public class MainMenu : MonoBehaviour
         {
             ShowInitialMenu();
         }
+    }
+
+    public void Next()
+    {
+        texts[_currentTextIdx].SetActive(false);
+        _currentTextIdx++;
+        texts[_currentTextIdx].SetActive(true);
+        if (_currentTextIdx == texts.Length - 1)
+        {
+            buttons[1].SetActive(false);
+        }
+        buttons[0].SetActive(true);
+    }
+
+    public void Previous()
+    {
+        texts[_currentTextIdx].SetActive(false);
+        _currentTextIdx--;
+        texts[_currentTextIdx].SetActive(true);
+        if (_currentTextIdx == 0)
+        {
+            buttons[0].SetActive(false);
+        }
+        buttons[1].SetActive(true);
     }
 }

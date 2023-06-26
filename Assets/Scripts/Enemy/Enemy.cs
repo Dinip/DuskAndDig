@@ -29,12 +29,18 @@ public class Enemy : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    public float Health => _health;
+
+    public float MaxHealth;
+
     private void Awake()
     {
         _health = enemyObject.Health;
         _animator = GetComponent<Animator>();
         _enemyPatrol = GetComponentInParent<EnemyPatrol>();
         _audioSource = GetComponent<AudioSource>();
+
+        MaxHealth = _health;
     }
 
     private void Update()
@@ -100,6 +106,9 @@ public class Enemy : MonoBehaviour
         {
             _enemyPatrol.enabled = false;
             _animator.SetTrigger("die");
+        } else
+        {
+            _animator.SetTrigger("hurt");
         }
     }
 

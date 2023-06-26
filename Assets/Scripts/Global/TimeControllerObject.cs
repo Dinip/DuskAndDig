@@ -33,7 +33,7 @@ public class TimeControllerObject : ScriptableObject
     {
         get
         {
-            return 1f / (cityBuilderTimeRuntime / (60f * 24f));
+            return 1f / (cityBuilderTimeRuntime / (60f * 12f));
         }
     }
 
@@ -41,7 +41,7 @@ public class TimeControllerObject : ScriptableObject
     {
         get
         {
-            return 1f / (actionTimeRuntime / (60f * 24f));
+            return 1f / (actionTimeRuntime / (60f * 12f));
         }
     }
 
