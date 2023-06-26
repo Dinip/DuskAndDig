@@ -7,7 +7,7 @@ using static Utils;
 public class Building
 {
     public BuildingType buildingType;
-    public int level = 1;
+    public int level = 0;
     public int maxLevel = 4;
     public List<float> levelMultipler;
     public List<UpgradeBuildingLevel> levelCost;

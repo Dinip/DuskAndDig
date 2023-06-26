@@ -1,10 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BuildingPlacement : MonoBehaviour
 {
     [SerializeField]
-    private EventBus buildingObject;
+    private EventBus eventBus;
 
     private GameObject _pendingObject;
 
@@ -32,15 +33,17 @@ public class BuildingPlacement : MonoBehaviour
 
     private void OnEnable()
     {
-        buildingObject.pendingBuilding.AddListener(PendingBuildSelect);
-        buildingObject.canPlaceBuilding.AddListener(CanPlace);
+        eventBus.pendingBuilding.AddListener(PendingBuildSelect);
+        eventBus.canPlaceBuilding.AddListener(CanPlace);
+        eventBus.placeBuilding.AddListener(SelectObject);
         LoadState();
     }
 
     private void OnDisable()
     {
-        buildingObject.pendingBuilding.RemoveListener(PendingBuildSelect);
-        buildingObject.canPlaceBuilding.RemoveListener(CanPlace);
+        eventBus.pendingBuilding.RemoveListener(PendingBuildSelect);
+        eventBus.canPlaceBuilding.RemoveListener(CanPlace);
+        eventBus.placeBuilding.RemoveListener(SelectObject);
     }
 
     private void PendingBuildSelect(GameObject build)
