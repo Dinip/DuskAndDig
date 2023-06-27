@@ -22,6 +22,6 @@ MonoBehaviour:
     Id: 5
     buffs:
     - attribute: 2
-      value: 40
-      min: 40
-      max: 40
+      value: 45
+      min: 45
+      max: 45

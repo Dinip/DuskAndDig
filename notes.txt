@@ -1,0 +1,77 @@
+Upgrades:
+	- Hospital
+		- 1st placement (tier 1): 10 iron ingot - 0.75/sec
+		- 1st upgrade (tier 1 -> tier 2): 25 iron ingot - 1.1/sec
+		- 2nd upgrade (tier 2 -> tier 3): 25 gold ingot - 1.50/sec
+		- 3rd upgrade (tier 3 -> tier 4): 30 iron ingot + 25 gold ingot - 2.0/sec
+	- OreProcessing
+		- 1st placement (tier 1): 10 iron ORE - 5.0 sec/item
+		- 1st upgrade (tier 1 -> tier 2): 25 iron ingot - 3.0 sec/item
+		- 2nd upgrade (tier 2 -> tier 3): 25 gold ingot - 1.0 sec/item
+		- 3rd upgrade (tier 3 -> tier 4): 30 iron ingot + 25 gold ingot - 0.5 sec/item
+	- BlackSmith/Workshop
+		- 1st placement (tier 1): 10 iron ingot - craft iron sword & armor - 15 sec craft
+		- 1st upgrade (tier 1 -> tier 2): 20 iron ingot + 10 gold ingot - craft gold sword & armor - 12.5 sec craft
+		- 2nd upgrade (tier 2 -> tier 3): 15 gold ingot + 5 diamond - craft diamond sword & armor - 7.5 sec craft
+	- Beacon
+		- 1st placement (tier 1): 5 iron ingot - +5% atk dmg
+		- 1st upgrade (tier 1 -> tier 2): 10 iron ingot - +20% atk dmg
+		- 2nd upgrade (tier 2 -> tier 3): 10 iron ingot + 10 gold ingot - +40% atk dmg
+		- 3rd upgrade (tier 3 -> tier 4): 10 gold ingot + 5 diamond - +75% atk dmg
+
+
+Workshop:
+	- default wood sword hits 10hp
+	- tier 1: 
+		+ iron sword: 2 iron - hits 20hp
+		+ iron armor: 6 iron - absorbs 20%
+	- tier 2: 
+		+ gold sword: 2 gold - hits 35hp
+		+ gold armor: 6 gold - absorbs 45%
+	- tier 3: 
+		+ diamond sword: 2 diamond - hits 60hp
+		+ diamond armor: 6 diamond - absorbs 80%
+
+
+Ore Spawn:
+	- Day 1
+		- Iron: 99%
+		- Gold: 0%
+		- Diamond: 1%
+	- Day 2
+		- Iron: 85%
+		- Gold: 10%
+		- Diamond: 5%
+	- Day 3
+		- Iron: 80%
+		- Gold: 15%
+		- Diamond: 5%
+	- Day 4
+		- Iron: 75%
+		- Gold: 20%
+		- Diamond: 5%
+	- Day 5
+		- Iron: 70%
+		- Gold: 22.5%
+		- Diamond: 7.5%
+	- Day 6
+		- Iron: 65%
+		- Gold: 25%
+		- Diamond: 10%
+	- Day 7+
+		- Iron: 40%
+		- Gold: 40%
+		- Diamond: 20%
+
+global
+E open inv
+ESQ pause
+
+3d
+F open building in range (if allow open)
+B open building menu
+click building open upgrade menu
+
+2d
+Z attack
+SPACE jump

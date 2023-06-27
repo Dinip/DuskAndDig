@@ -136,10 +136,10 @@ MonoBehaviour:
     level: 0
     maxLevel: 4
     levelMultipler:
-    - 0.5
     - 0.75
     - 1.1
-    - 1.25
+    - 1.5
+    - 2
     levelCost:
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
@@ -152,7 +152,7 @@ MonoBehaviour:
         amount: 25
     - levelUpgrade:
       - item: {fileID: 11400000, guid: 93feac8d413969f4480cb9d1ab47e00c, type: 2}
-        amount: 50
+        amount: 30
       - item: {fileID: 11400000, guid: 9e5803f4757d22e4dba2ec2586ed6465, type: 2}
         amount: 25
     input: {fileID: 0}

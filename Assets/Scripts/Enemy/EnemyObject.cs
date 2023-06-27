@@ -25,7 +25,7 @@ public class EnemyObject : ScriptableObject
     {
         get
         {
-            return baseHealth + (timeObject.currentDay - 1) * healthMultiplier * 30;
+            return baseHealth + (timeObject.currentDay - 1) * healthMultiplier * 15;
         }
     }
     public float Damage
@@ -38,21 +38,7 @@ public class EnemyObject : ScriptableObject
     public float AttackCooldown => attackCooldown;
 }
 
-//b   100 20
-//x   1.2 1.1
-
-//1   100 20
-//2   136 31
-//3   172 42
-//4   208 53
-//5   244 64
-//6   280 75
-//7   316 86
-
-//*   30  10
-
 //----------------------//
-
 //b   15 10
 //x   1.2 1.1
 
@@ -65,3 +51,17 @@ public class EnemyObject : ScriptableObject
 //7   231 76
 
 //*   30  10
+
+//----------------------//
+//b   15 10
+//x   1.2 1.1
+
+//1   15  10
+//2   33  21
+//3   51  32
+//4   69 43
+//5   87 54
+//6   105 65
+//7   123 76
+
+//*   15  10
